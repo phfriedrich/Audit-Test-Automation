@@ -335,50 +335,85 @@ function Merge-CisAuditsToMitreMap {
         [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
         $Audit
     )
+
     Begin {
-        #start the excel com to make its API available
-        $CISMappingPath = "$PSScriptRoot\CIS_Microsoft_Windows_10_Enterprise_Release_21H1_Benchmark_v1.11.0.xlsx"
-        
-        $excelObject = New-Object -ComObject Excel.Application
+		$finally = $true;
+		try{
+			#start the excel com to make its API available
+			$CISMappingPath = "$PSScriptRoot\CIS_Microsoft_Windows_10_Enterprise_Release_21H1_Benchmark_v1.11.0.xlsx"
 
-        $workbook = $excelObject.Workbooks.Open($CISMappingPath)
-        $worksheet = $workbook.Sheets | Where-Object { $_.Name -eq "MITRE ATT&CK Mappings" }
-        
-        $cisIdColumn = "B"
-        $cisIdRange = $worksheet.Range($cisIdColumn + ":" + $cisIdColumn)
-
-        $map = @{}
+			$excelObject = New-Object -ComObject Excel.Application
+	
+			$workbook = $excelObject.Workbooks.Open($CISMappingPath)
+			$worksheet = $workbook.Sheets | Where-Object { $_.Name -eq "MITRE ATT&CK Mappings" }
+			
+			$cisIdColumn = "B"
+			$cisIdRange = $worksheet.Range($cisIdColumn + ":" + $cisIdColumn)
+	
+			$map = @{}
+			$finally = $false;
+		}
+		catch {
+			Write-Host $_.Message
+		}
+		finally {
+			if($finally) {
+				# release Com Object
+				$workbook.Close($false)
+				$excelObject.Quit()
+				[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)
+				[System.GC]::Collect()
+				[System.GC]::WaitForPendingFinalizers()
+			}
+		}
     }
         
     Process {
-        $id = $Audit.Id
-        $cisIdLocation = $cisIdRange.Find($id)
-        if ($cisIdLocation) {
-            $row = $cisIdLocation.Row
-            $tactic1 = $worksheet.Cells.Item($row, 5).Text
-            $tactic2 = $worksheet.Cells.Item($row, 6).Text
-            $technique1 = $worksheet.Cells.Item($row, 7).Text
-            $technique2 = $worksheet.Cells.Item($row, 8).Text
-        
-            if ($tactic1 -ne "No MITRE ATT&CK mapping  ") {
-				if($null -eq $map[$tactic1]){
-					$map[$tactic1] = @{}
+		$finally = $true;
+		try {
+			$id = $Audit.Id
+			$cisIdLocation = $cisIdRange.Find($id)
+			if ($cisIdLocation) {
+				$row = $cisIdLocation.Row
+				$tactic1 = ($worksheet.Cells.Item($row, 5).Text).Trim()
+				$tactic2 = ($worksheet.Cells.Item($row, 6).Text).Trim()
+				$technique1 = ($worksheet.Cells.Item($row, 7).Text).Trim()
+				$technique2 = ($worksheet.Cells.Item($row, 8).Text).Trim()
+			
+				if ($tactic1 -ne "No MITRE ATT&CK mapping") {
+					if($null -eq $map[$tactic1]){
+						$map[$tactic1] = @{}
+					}
+					if($null -eq ($($map[$tactic1])[$technique1])){
+						$($map[$tactic1])[$technique1]= @{}
+					}
+					$($($map[$tactic1])[$technique1])[$id] = $Audit.Status
 				}
-				if($null -eq ($($map[$tactic1])[$technique1])){
-					$($map[$tactic1])[$technique1]= @{}
+				if ($tactic2 -ne "No MITRE ATT&CK mapping" -and $tactic2 -ne "" -and $technique2 -ne "") {
+					if($null -eq $map[$tactic2]){
+						$map[$tactic2] = @{}
+					}
+					if($null -eq ($($map[$tactic2])[$technique2])){
+						$($map[$tactic2])[$technique2]= @{}
+					}
+					$($($map[$tactic2])[$technique2])[$id] = $Audit.Status
 				}
-                $($($map[$tactic1])[$technique1])[$id] = $Audit.Status
-            }
-            if ($tactic2 -ne "No MITRE ATT&CK mapping  " -and $tactic2 -ne "" -and $technique2 -ne "") {
-				if($null -eq $map[$tactic2]){
-					$map[$tactic2] = @{}
-				}
-				if($null -eq ($($map[$tactic2])[$technique2])){
-					$($map[$tactic2])[$technique2]= @{}
-				}
-                $($($map[$tactic2])[$technique2])[$id] = $Audit.Status
-            }
-        }
+			}
+			$finally = $false;
+		}
+		catch {
+			Write-Host $_.Message
+		}
+		finally {
+			if($finally) {
+				# release Com Object
+				$workbook.Close($false)
+				$excelObject.Quit()
+				[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)
+				[System.GC]::Collect()
+				[System.GC]::WaitForPendingFinalizers()
+			}
+		}
     }
         
     End {
