@@ -359,11 +359,18 @@ function Merge-CisAuditsToMitreMap {
 		finally {
 			if($finally) {
 				# release Com Object
-				$workbook.Close($false)
-				$excelObject.Quit()
-				[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)
-				[System.GC]::Collect()
-				[System.GC]::WaitForPendingFinalizers()
+				if($workbench) {
+					$workbook.Close($false)
+				}
+				if($excelObject) {
+					$excelObject.Quit()
+					[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)					
+				}
+				if($workbench -or $excelObject) {
+					[System.GC]::Collect()
+					[System.GC]::WaitForPendingFinalizers()
+				}
+				Write-Host "Finally Begin"
 			}
 		}
     }
@@ -398,7 +405,7 @@ function Merge-CisAuditsToMitreMap {
 					}
 					$($($map[$tactic2])[$technique2])[$id] = $Audit.Status
 				}
-			}
+			}			
 			$finally = $false;
 		}
 		catch {
@@ -407,22 +414,35 @@ function Merge-CisAuditsToMitreMap {
 		finally {
 			if($finally) {
 				# release Com Object
-				$workbook.Close($false)
-				$excelObject.Quit()
-				[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)
-				[System.GC]::Collect()
-				[System.GC]::WaitForPendingFinalizers()
+				if($workbench) {
+					$workbook.Close($false)
+				}
+				if($excelObject) {
+					$excelObject.Quit()
+					[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)					
+				}
+				if($workbench -or $excelObject) {
+					[System.GC]::Collect()
+					[System.GC]::WaitForPendingFinalizers()
+				}
+				Write-Host "Finally Process"
 			}
 		}
     }
         
     End {
         # release Com Object
-        $workbook.Close($false)
-        $excelObject.Quit()
-        [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)
-        [System.GC]::Collect()
-        [System.GC]::WaitForPendingFinalizers()
+		if($workbench) {
+			$workbook.Close($false)
+		}
+		if($excelObject) {
+			$excelObject.Quit()
+			[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)					
+		}
+		if($workbench -or $excelObject) {
+			[System.GC]::Collect()
+			[System.GC]::WaitForPendingFinalizers()
+		}
 
         return $map
     }
