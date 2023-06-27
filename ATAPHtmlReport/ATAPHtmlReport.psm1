@@ -24,6 +24,14 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #>
 
+enum AuditInfoStatus {
+	True
+	False
+	Warning
+	None
+	Error
+}
+
 $ScriptRoot = Split-Path -Parent $PSCommandPath
 
 $Settings = Import-PowerShellDataFile -Path "$ScriptRoot\Settings.psd1"
@@ -31,6 +39,41 @@ $ModuleVersion = (Import-PowerShellDataFile -Path "$ScriptRoot\ATAPHtmlReport.ps
 
 $StatusValues = 'True', 'False', 'Warning', 'None', 'Error'
 $AuditProperties = @{ Name = 'Id' }, @{ Name = 'Task' }, @{ Name = 'Message' }, @{ Name = 'Status' }
+
+class MitreMap {
+    [System.Collections.Generic.Dictionary[string, [System.Collections.Generic.Dictionary[string, [System.Collections.Generic.Dictionary[string, AuditInfoStatus]]]]]] $Map
+
+    MitreMap() {
+        $this.Map = @{}
+    }
+
+    [void] Add($tactic, $technique, $id, $value) {
+        if($tactic.GetType().Name -eq 'String' -and $technique.GetType().Name -eq 'String' -and $id.GetType().Name -eq 'String' -and $value.GetType().Name -eq 'AuditInfoStatus'){
+            if($null -eq $this.Map[$tactic]) {
+                $this.Map[$tactic] = @{}
+            }
+            if($null -eq $this.Map[$tactic][$technique]) {
+                $this.Map[$tactic][$technique] = @{}
+            }
+            $this.Map[$tactic][$technique][$id] += $value
+        }
+        else {
+            Write-Error -Message 'Could not add value to Map' -Category InvalidType
+        }
+    }
+
+	[void] Print() {
+		foreach ($tactic in $this.Map.Keys) {
+			Write-Host "$tactic = "
+			foreach ($technique in $this.Map[$tactic].Keys) {
+				Write-Host "    $technique = "
+				foreach ($id in $this.Map[$tactic][$technique].Keys) {
+					Write-Host "        $id = $($this.Map[$tactic][$technique][$id])"
+				}
+			}
+		}
+	}
+}
 
 function Join-ATAPReportStatus {
 	[CmdletBinding()]
@@ -337,112 +380,112 @@ function Merge-CisAuditsToMitreMap {
     )
 
     Begin {
-		$finally = $true;
-		try{
-			#start the excel com to make its API available
-			$CISMappingPath = "$PSScriptRoot\CIS_Microsoft_Windows_10_Enterprise_Release_21H1_Benchmark_v1.11.0.xlsx"
+      $finally = $true;
+      try{
+        #start the excel com to make its API available
+        $CISMappingPath = "$PSScriptRoot\CIS_Microsoft_Windows_10_Enterprise_Release_21H1_Benchmark_v1.11.0.xlsx"
 
-			$excelObject = New-Object -ComObject Excel.Application
-	
-			$workbook = $excelObject.Workbooks.Open($CISMappingPath)
-			$worksheet = $workbook.Sheets | Where-Object { $_.Name -eq "MITRE ATT&CK Mappings" }
-			
-			$cisIdColumn = "B"
-			$cisIdRange = $worksheet.Range($cisIdColumn + ":" + $cisIdColumn)
-	
-			$map = @{}
-			$finally = $false;
-		}
-		catch {
-			Write-Host $_.Message
-		}
-		finally {
-			if($finally) {
-				# release Com Object
-				if($workbench) {
-					$workbook.Close($false)
-				}
-				if($excelObject) {
-					$excelObject.Quit()
-					[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)					
-				}
-				if($workbench -or $excelObject) {
-					[System.GC]::Collect()
-					[System.GC]::WaitForPendingFinalizers()
-				}
-			}
-		}
+        $excelObject = New-Object -ComObject Excel.Application
+
+        $workbook = $excelObject.Workbooks.Open($CISMappingPath)
+        $worksheet = $workbook.Sheets | Where-Object { $_.Name -eq "MITRE ATT&CK Mappings" }
+
+        $cisIdColumn = "B"
+        $cisIdRange = $worksheet.Range($cisIdColumn + ":" + $cisIdColumn)
+
+        $map = @{}
+        $finally = $false;
+      }
+      catch {
+        Write-Host $_.Message
+      }
+      finally {
+        if($finally) {
+          # release Com Object
+          if($workbench) {
+            $workbook.Close($false)
+          }
+          if($excelObject) {
+            $excelObject.Quit()
+            [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)					
+          }
+          if($workbench -or $excelObject) {
+            [System.GC]::Collect()
+            [System.GC]::WaitForPendingFinalizers()
+          }
+        }
+      }
     }
         
     Process {
-		$finally = $true;
-		try {
-			$id = $Audit.Id
-			$cisIdLocation = $cisIdRange.Find($id)
-			if ($cisIdLocation) {
-				$row = $cisIdLocation.Row
-				$tactic1 = ($worksheet.Cells.Item($row, 5).Text).Trim()
-				$tactic2 = ($worksheet.Cells.Item($row, 6).Text).Trim()
-				$technique1 = ($worksheet.Cells.Item($row, 7).Text).Trim()
-				$technique2 = ($worksheet.Cells.Item($row, 8).Text).Trim()
-			
-				if ($tactic1 -ne "No MITRE ATT&CK mapping") {
-					if($null -eq $map[$tactic1]){
-						$map[$tactic1] = @{}
-					}
-					if($null -eq ($($map[$tactic1])[$technique1])){
-						$($map[$tactic1])[$technique1]= @{}
-					}
-					$($($map[$tactic1])[$technique1])[$id] = $Audit.Status
-				}
-				if ($tactic2 -ne "No MITRE ATT&CK mapping" -and $tactic2 -ne "" -and $technique2 -ne "") {
-					if($null -eq $map[$tactic2]){
-						$map[$tactic2] = @{}
-					}
-					if($null -eq ($($map[$tactic2])[$technique2])){
-						$($map[$tactic2])[$technique2]= @{}
-					}
-					$($($map[$tactic2])[$technique2])[$id] = $Audit.Status
-				}
-			}			
-			$finally = $false;
+      $finally = $true;
+      try {
+        $id = $Audit.Id
+        $cisIdLocation = $cisIdRange.Find($id)
+        if ($cisIdLocation) {
+          $row = $cisIdLocation.Row
+          $tactic1 = ($worksheet.Cells.Item($row, 5).Text).Trim()
+          $tactic2 = ($worksheet.Cells.Item($row, 6).Text).Trim()
+          $technique1 = ($worksheet.Cells.Item($row, 7).Text).Trim()
+          $technique2 = ($worksheet.Cells.Item($row, 8).Text).Trim()
+
+          if ($tactic1 -ne "No MITRE ATT&CK mapping") {
+            if($null -eq $map[$tactic1]){
+              $map[$tactic1] = @{}
+            }
+            if($null -eq ($($map[$tactic1])[$technique1])){
+              $($map[$tactic1])[$technique1]= @{}
+            }
+            $($($map[$tactic1])[$technique1])[$id] = $Audit.Status
+          }
+          if ($tactic2 -ne "No MITRE ATT&CK mapping" -and $tactic2 -ne "" -and $technique2 -ne "") {
+            if($null -eq $map[$tactic2]){
+              $map[$tactic2] = @{}
+            }
+            if($null -eq ($($map[$tactic2])[$technique2])){
+              $($map[$tactic2])[$technique2]= @{}
+            }
+            $($($map[$tactic2])[$technique2])[$id] = $Audit.Status
+          }
+        }			
+        $finally = $false;
+      }
+      catch {
+        Write-Host $_.Message
+      }
+      finally {
+        if($finally) {
+          # release Com Object
+          if($workbench) {
+            $workbook.Close($false)
+          }
+          if($excelObject) {
+            $excelObject.Quit()
+            [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)					
+          }
+          if($workbench -or $excelObject) {
+            [System.GC]::Collect()
+            [System.GC]::WaitForPendingFinalizers()
+          }
+        }
+      }
 		}
-		catch {
-			Write-Host $_.Message
-		}
-		finally {
-			if($finally) {
-				# release Com Object
-				if($workbench) {
-					$workbook.Close($false)
-				}
-				if($excelObject) {
-					$excelObject.Quit()
-					[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)					
-				}
-				if($workbench -or $excelObject) {
-					[System.GC]::Collect()
-					[System.GC]::WaitForPendingFinalizers()
-				}
-			}
-		}
-    }
         
     End {
         # release Com Object
-		if($workbench) {
-			$workbook.Close($false)
-		}
-		if($excelObject) {
-			$excelObject.Quit()
-			[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)					
-		}
-		if($workbench -or $excelObject) {
-			[System.GC]::Collect()
-			[System.GC]::WaitForPendingFinalizers()
-		}
+        if($workbench) {
+          $workbook.Close($false)
+        }
+        if($excelObject) {
+          $excelObject.Quit()
+          [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)					
+        }
+        if($workbench -or $excelObject) {
+          [System.GC]::Collect()
+          [System.GC]::WaitForPendingFinalizers()
+        }
 
-        return $map
+        return [MitreMap] $mitreMap
     }
 }
 
@@ -472,7 +515,7 @@ function Show-ReportSections {
 	)
 
 	process {
-		$id = $Prefix + $Title
+		$id = $Prefix + " " + $Title
 		# $sectionStatus = Get-SectionStatus -ConfigAudits $ConfigAudits -Subsections $Subsections
 
 		#check if main section
@@ -960,10 +1003,10 @@ function Get-ATAPHtmlReport {
 
 						# Report Sections for hardening settings
 						foreach ($section in $Sections) {
-							$section | Get-HtmlReportSection 
-							$section | Show-ReportSections
+							$section | Get-HtmlReportSection
+							$section | Where-Object { $_.Title -eq "CIS Benchmarks" } | Show-ReportSections 
 						}
-						
+						$Sections | Where-Object { $_.Title -eq "CIS Benchmarks" } | ForEach-Object {return $_.SubSections} | ForEach-Object {return $_.AuditInfos} | Merge-CisAuditsToMitreMap
 					}
 
 
