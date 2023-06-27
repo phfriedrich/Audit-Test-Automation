@@ -370,7 +370,6 @@ function Merge-CisAuditsToMitreMap {
 					[System.GC]::Collect()
 					[System.GC]::WaitForPendingFinalizers()
 				}
-				Write-Host "Finally Begin"
 			}
 		}
     }
@@ -425,7 +424,6 @@ function Merge-CisAuditsToMitreMap {
 					[System.GC]::Collect()
 					[System.GC]::WaitForPendingFinalizers()
 				}
-				Write-Host "Finally Process"
 			}
 		}
     }
