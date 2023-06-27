@@ -24,6 +24,14 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #>
 
+enum AuditInfoStatus {
+	True
+	False
+	Warning
+	None
+	Error
+}
+
 $ScriptRoot = Split-Path -Parent $PSCommandPath
 
 $Settings = Import-PowerShellDataFile -Path "$ScriptRoot\Settings.psd1"
@@ -33,7 +41,7 @@ $StatusValues = 'True', 'False', 'Warning', 'None', 'Error'
 $AuditProperties = @{ Name = 'Id' }, @{ Name = 'Task' }, @{ Name = 'Message' }, @{ Name = 'Status' }
 
 class MitreMap {
-    [System.Collections.Generic.Dictionary[string, [System.Collections.Generic.Dictionary[string, [System.Collections.Generic.Dictionary[string, bool]]]]]] $Map
+    [System.Collections.Generic.Dictionary[string, [System.Collections.Generic.Dictionary[string, [System.Collections.Generic.Dictionary[string, AuditInfoStatus]]]]]] $Map
 
     MitreMap() {
         $this.Map = @{}
@@ -415,8 +423,7 @@ function Merge-CisAuditsToMitreMap {
         [System.GC]::Collect()
         [System.GC]::WaitForPendingFinalizers()
 
-		$mitreMap.Print()
-        return $mitreMap.Map
+        return [MitreMap] $mitreMap
     }
 }
 
