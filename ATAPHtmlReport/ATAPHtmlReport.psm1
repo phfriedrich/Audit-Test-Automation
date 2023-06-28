@@ -593,47 +593,99 @@ function Merge-CisAuditsToMitreMap {
         $Audit
     )
     Begin {
-        #start the excel com to make its API available
-        $CISMappingPath = "$PSScriptRoot\CIS_Microsoft_Windows_10_Enterprise_Release_21H1_Benchmark_v1.11.0.xlsx"
-        
-        $excelObject = New-Object -ComObject Excel.Application
+		$finally = $true;
+		try{
+			#start the excel com to make its API available
+			$CISMappingPath = "$PSScriptRoot\CIS_Microsoft_Windows_10_Enterprise_Release_21H1_Benchmark_v1.11.0.xlsx"
 
-        $workbook = $excelObject.Workbooks.Open($CISMappingPath)
-        $worksheet = $workbook.Sheets | Where-Object { $_.Name -eq "MITRE ATT&CK Mappings" }
-        
-        $cisIdColumn = "B"
-        $cisIdRange = $worksheet.Range($cisIdColumn + ":" + $cisIdColumn)
+			$excelObject = New-Object -ComObject Excel.Application
 
-		$mitreMap = [MitreMap]::new()
+			$workbook = $excelObject.Workbooks.Open($CISMappingPath)
+			$worksheet = $workbook.Sheets | Where-Object { $_.Name -eq "MITRE ATT&CK Mappings" }
+
+			$cisIdColumn = "B"
+			$cisIdRange = $worksheet.Range($cisIdColumn + ":" + $cisIdColumn)
+
+			$mitreMap = [MitreMap]::new()
+			$finally = $false;
+		}
+		catch {
+			Write-Host $_.Message
+		}
+		finally {
+			if($finally) {
+				# release Com Object
+				if($workbench) {
+					$workbook.Close($false)
+				}
+				if($excelObject) {
+					$excelObject.Quit()
+					[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)					
+				}
+				if($workbench -or $excelObject) {
+					[System.GC]::Collect()
+					[System.GC]::WaitForPendingFinalizers()
+				}
+			}
+		}
     }
         
     Process {
-        $id = $Audit.Id
-        $cisIdLocation = $cisIdRange.Find($id)
+		$finally = $true;
+		try {
+			$id = $Audit.Id
+			$cisIdLocation = $cisIdRange.Find($id)
 
-        if ($cisIdLocation) {
-            $row = $cisIdLocation.Row
-            $tactic1 = ($worksheet.Cells.Item($row, 5).Text).Trim()
-            $tactic2 = ($worksheet.Cells.Item($row, 6).Text).Trim()
-            $technique1 = ($worksheet.Cells.Item($row, 7).Text).Trim()
-            $technique2 = ($worksheet.Cells.Item($row, 8).Text).Trim()
-        
-			foreach ($tactic in Get-MitreTactics -TechniqueID $technique1){
-				$mitreMap.Add($tactic, $technique1, $id, $Audit.Status)
+			if ($cisIdLocation) {
+				$row = $cisIdLocation.Row
+				$tactic1 = ($worksheet.Cells.Item($row, 5).Text).Trim()
+				$tactic2 = ($worksheet.Cells.Item($row, 6).Text).Trim()
+				$technique1 = ($worksheet.Cells.Item($row, 7).Text).Trim()
+				$technique2 = ($worksheet.Cells.Item($row, 8).Text).Trim()
+			
+				foreach ($tactic in Get-MitreTactics -TechniqueID $technique1){
+					$mitreMap.Add($tactic1, $technique1, $id, $Audit.Status)
+				}
+				foreach ($tactic in Get-MitreTactics -TechniqueID $technique2){
+					$mitreMap.Add($tactic2, $technique2, $id, $Audit.Status)
+				}
 			}
-			foreach ($tactic in Get-MitreTactics -TechniqueID $technique2){
-				$mitreMap.Add($tactic, $technique2, $id, $Audit.Status)
-			}
-        }
+			$finally = $false;
+		}
+		catch {
+			Write-Host $_.Message
+		}
+		finally {
+			if($finally) {
+				# release Com Object
+				if($workbench) {
+					$workbook.Close($false)
+				}
+				if($excelObject) {
+					$excelObject.Quit()
+					[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)					
+				}
+				if($workbench -or $excelObject) {
+					[System.GC]::Collect()
+					[System.GC]::WaitForPendingFinalizers()
+				}
+			}	
+		}
     }
         
     End {
         # release Com Object
-        $workbook.Close($false)
-        $excelObject.Quit()
-        [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)
-        [System.GC]::Collect()
-        [System.GC]::WaitForPendingFinalizers()
+		if($workbench) {
+			$workbook.Close($false)
+		}
+		if($excelObject) {
+			$excelObject.Quit()
+			[void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($excelObject)					
+		}
+		if($workbench -or $excelObject) {
+			[System.GC]::Collect()
+			[System.GC]::WaitForPendingFinalizers()
+		}
 
         return [MitreMap] $mitreMap
     }
