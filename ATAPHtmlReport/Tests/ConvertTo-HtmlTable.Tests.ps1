@@ -7,22 +7,22 @@ InModuleScope ATAPHtmlReport {
         It 'tests with an example Report' {
 
             $AuditInfos = @{Id = "1.1.4"
-                Status         = $false
+                Status         = [AuditInfoStatus]::False
             },
             @{Id       = "1.2.3"
-                Status = $true
+                Status = [AuditInfoStatus]::True
             },
             @{Id       = "1.2.4"
-            Status = $true
+            Status = [AuditInfoStatus]::True
         },
             @{Id       = "1.2.6"
-            Status = $true
+            Status = [AuditInfoStatus]::True
         },
             @{Id       = "1.2.5"
-                Status = $false
+                Status = [AuditInfoStatus]::False
             }, 
             @{Id       = "1.4.5"
-                Status = $true
+                Status = [AuditInfoStatus]::True
             }
 
             $Subsection = @{AuditInfos = $AuditInfos }
@@ -40,11 +40,13 @@ InModuleScope ATAPHtmlReport {
 
             $Mappings = $Sections | Where-Object { $_.Title -eq "CIS Benchmarks" } | ForEach-Object { return $_.SubSections } | ForEach-Object { return $_.AuditInfos } | Merge-CisAuditsToMitreMap
 
-            $html = ConvertTo-HtmlTable $Mappings
+            Write-Host $Mappings.map
+            
+            $html = ConvertTo-HtmlTable $Mappings.map
 
             Write-Host $html
 
-            $html | Should -Be "<table ><thead ><tr ><td >TA0006</td><td >No MITRE ATT&CK mapping</td><td >TA0001</td></tr></thead><tbody ><tr ><td ><p ><div >T1110 : 1 /2</div></p></td><td ><p ><div >No MITRE ATT&CK mapping : 2 /3</div></p></td><td ><p ><div >T1078 : 0 /1</div></p></td></tr></tbody></table>"
+            $html | Should -Be "<table ><thead ><tr ><td >TA0004</td><td >TA0005</td><td >TA0001</td><td >TA0003</td><td >TA0006</td></tr></thead><tbody ><tr ><td ><p ><div >T1078 : 1 /1</div></p></td><td ><p ><div >T1078 : 1 /1</div></p></td><td ><p ><div >T1078 : 1 /1</div></p></td><td ><p ><div >T1078 : 1 /1</div></p></td><td ><p ><div >T1110 : 1 /2</div></p></td></tr></tbody></table>"
         }
     }
 }

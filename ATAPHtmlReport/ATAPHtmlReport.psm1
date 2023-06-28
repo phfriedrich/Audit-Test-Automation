@@ -1764,7 +1764,7 @@ function Get-ATAPHtmlReport {
 							ForEach-Object { return $_.AuditInfos } | 
 							Merge-CisAuditsToMitreMap
 
-							ConvertTo-HtmlTable $Mappings
+							ConvertTo-HtmlTable $Mappings.map
 						}
 					}
 
