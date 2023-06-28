@@ -644,10 +644,10 @@ function Merge-CisAuditsToMitreMap {
 				$technique2 = ($worksheet.Cells.Item($row, 8).Text).Trim()
 			
 				foreach ($tactic in Get-MitreTactics -TechniqueID $technique1){
-					$mitreMap.Add($tactic1, $technique1, $id, $Audit.Status)
+					$mitreMap.Add($tactic, $technique1, $id, $Audit.Status)
 				}
 				foreach ($tactic in Get-MitreTactics -TechniqueID $technique2){
-					$mitreMap.Add($tactic2, $technique2, $id, $Audit.Status)
+					$mitreMap.Add($tactic, $technique2, $id, $Audit.Status)
 				}
 			}
 			$finally = $false;
