@@ -710,7 +710,7 @@ function Merge-CisAuditsToMitreMap {
 		
 		if($technique1) {
 			foreach ($tactic in Get-MitreTactics -TechniqueID $technique1){
-				if($tactic -and $technique1) {
+				if($tactic) {
 					$mitreMap.Add($tactic, $technique1, $id, $Audit.Status)
 				}
 			}
@@ -718,7 +718,7 @@ function Merge-CisAuditsToMitreMap {
 
 		if($technique2) {
 			foreach ($tactic in Get-MitreTactics -TechniqueID $technique2){
-				if($tactic -and $technique2) {
+				if($tactic) {
 					$mitreMap.Add($tactic, $technique2, $id, $Audit.Status)
 				}
 			}
