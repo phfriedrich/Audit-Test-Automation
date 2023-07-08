@@ -40,6 +40,23 @@ $ModuleVersion = (Import-PowerShellDataFile -Path "$ScriptRoot\ATAPHtmlReport.ps
 $StatusValues = 'True', 'False', 'Warning', 'None', 'Error'
 $AuditProperties = @{ Name = 'Id' }, @{ Name = 'Task' }, @{ Name = 'Message' }, @{ Name = 'Status' }
 
+$MitreTacticsMap = @{
+	TA0043 = 'Reconnaissance'
+	TA0042 = 'Resource Development'
+	TA0001 = 'Initial Access'
+	TA0002 = 'Execution'
+	TA0003 = 'Persistence'
+	TA0004 = 'Privilege Escalation'
+	TA0005 = 'Defense Evasion'
+	TA0006 = 'Credential Access'
+	TA0007 = 'Discovery'
+	TA0008 = 'Lateral Movement'
+	TA0009 = 'Collection'
+	TA0011 = 'Command and Control'
+	TA0010 = 'Exfiltration'
+	TA0040 = 'Impact'
+}
+
 $MitreTechniquesToTacticsMap = @{
 	T1069='TA0007'
 	T1563='TA0008'
@@ -238,6 +255,24 @@ $MitreTechniquesToTacticsMap = @{
 	T1113='TA0009'
 	T1566='TA0001'
 	}
+
+
+function Get-MitreTacticName {
+		<#
+	.SYNOPSIS
+		Returns the corresponding name for a given Mitre Tactic Id
+
+	.EXAMPLE
+		Get-MitreTacticName TacticId 'TA0043'
+	#>
+	param(
+		[Parameter(Mandatory = $true)]
+		[string]
+		$TacticId
+	)
+
+	return $MitreTacticsMap[$tacticId]
+}
 
 function Get-MitreTactics {
 	<#
@@ -810,7 +845,8 @@ function ConvertTo-HtmlTable {
 				foreach ($tactic in $Mappings.Keys) {
 					$url = get-MitreLink -tactic -id $tactic
 					htmlElement 'td' @{} {
-						htmlElement 'a' @{href = $url } {"$tactic"}
+						$tacticName = Get-MitreTacticName -TacticId $tactic
+						htmlElement 'a' @{href = $url } {"$tacticName"}
 					}
 				}
 			}
