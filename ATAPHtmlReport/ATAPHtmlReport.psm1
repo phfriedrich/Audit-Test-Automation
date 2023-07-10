@@ -40,22 +40,8 @@ $ModuleVersion = (Import-PowerShellDataFile -Path "$ScriptRoot\ATAPHtmlReport.ps
 $StatusValues = 'True', 'False', 'Warning', 'None', 'Error'
 $AuditProperties = @{ Name = 'Id' }, @{ Name = 'Task' }, @{ Name = 'Message' }, @{ Name = 'Status' }
 
-$MitreTacticsMap = @{
-	TA0043 = 'Reconnaissance'
-	TA0042 = 'Resource Development'
-	TA0001 = 'Initial Access'
-	TA0002 = 'Execution'
-	TA0003 = 'Persistence'
-	TA0004 = 'Privilege Escalation'
-	TA0005 = 'Defense Evasion'
-	TA0006 = 'Credential Access'
-	TA0007 = 'Discovery'
-	TA0008 = 'Lateral Movement'
-	TA0009 = 'Collection'
-	TA0011 = 'Command and Control'
-	TA0010 = 'Exfiltration'
-	TA0040 = 'Impact'
-}
+# $MitreTacticsStore = Get-Content -Raw "$PSScriptRoot\resources\MitreTactics.json" | ConvertFrom-Json -AsHashtable   <- this is only available from powersehll v 6 onwards
+$MitreTacticsStore = Get-Content -Raw "$PSScriptRoot\resources\MitreTactics.json" | ConvertFrom-Json
 
 $MitreTechniquesToTacticsMap = @{
 	T1069='TA0007'
@@ -271,7 +257,8 @@ function Get-MitreTacticName {
 		$TacticId
 	)
 
-	return $MitreTacticsMap[$tacticId]
+	# $MitreTacticsStore[$tacticId] cannot be used because MitreTacticsStore is a customObject and not a map
+	return $MitreTacticsStore.$tacticId
 }
 
 function Get-MitreTactics {
