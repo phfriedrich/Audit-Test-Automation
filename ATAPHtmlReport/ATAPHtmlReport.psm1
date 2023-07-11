@@ -704,10 +704,9 @@ function Merge-CisAuditsToMitreMap {
         
     Process {
 		$id = $Audit.Id
-		$obj = ($json | Where-Object {$_.'Recommendation #' -eq $id})
-		$technique1 = $obj.'MITRE ATT&CK Technique 1'
-		$technique2 = $obj.'MITRE ATT&CK Technique 2'
-		
+		$technique1 = $json.$id.'Technique1'
+		$technique2 = $json.$id.'Technique2'
+
 		if($technique1) {
 			foreach ($tactic in Get-MitreTactics -TechniqueID $technique1){
 				if($tactic) {
