@@ -735,41 +735,64 @@ function ConvertTo-HtmlTable {
         $Mappings
     )
 
-	htmlElement 'table' @{} {
-		htmlElement 'thead' @{} {
-			htmlElement 'tr' @{} {
-				foreach ($tactic in $Mappings.Keys) {
-					$url = get-MitreLink -tactic -id $tactic
-					htmlElement 'td' @{} {
-						htmlElement 'a' @{href = $url } {"$tactic"}
-					}
-				}
-			}
-		}
-		htmlElement 'tbody' @{} {
-			htmlElement 'tr' @{} {
-				foreach ($tactic in $Mappings.Keys) {
-					htmlElement 'td' @{} {
-						foreach ($technique in $Mappings[$tactic].Keys){
-							htmlElement 'p' @{} {
-								htmlElement 'div' @{} {
-									$successCounter = 0
-									foreach ($id in $Mappings[$tactic][$technique].Keys) {
-										if($Mappings[$tactic][$technique][$id] -eq $true){
-											$successCounter++
-										}
-									}
-									$url = get-MitreLink -technique -id $technique
-						            htmlElement 'a' @{href = $url } { "$technique" }
-									htmlElement 'span' @{} {": $successCounter /" + $Mappings[$tactic][$technique].Count }
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+    htmlElement 'table' @{id='MITRETable'} {
+        htmlElement 'thead' @{id='MITREthead'} {
+            htmlElement 'tr' @{} {
+                foreach ($tactic in $Mappings.Keys) {
+                    $url = get-MitreLink -tactic -id $tactic
+                    htmlElement 'td' @{} {
+                        htmlElement 'a' @{href = $url } {"$tactic"}
+                    }
+                }
+            }
+        }
+        htmlElement 'tbody' @{id='MITREtbody'} {
+            htmlElement 'tr' @{} {
+                foreach ($tactic in $Mappings.Keys) {
+                    htmlElement 'td' @{id='MITREtbody'} {
+                        foreach ($technique in $Mappings[$tactic].Keys){
+                            htmlElement 'div' @{id='MITRETechniques'} {
+                                htmlElement 'div' @{class='MITRETechnique'} {  
+                                    $successCounter = 0
+                                    foreach ($id in $Mappings[$tactic][$technique].Keys) {
+                                        if($Mappings[$tactic][$technique][$id] -eq $true){
+                                            $successCounter++
+                                        }
+                                    }
+                                    $url = get-MitreLink -technique -id $technique
+                                    htmlElement 'a' @{href = $url } { "$technique" } 
+                                    htmlElement 'span' @{id='MITREtd'} {": $successCounter /" + $Mappings[$tactic][$technique].Count }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function Get-ColorValue{
+	<#
+	.Synopsis 
+		Compares two Integer variables returns true if equal, false if not
+	.Example 
+		$colorValue = Get-ColorValue $successCounter $Mappings[$tactic][$technique].Count
+	#>
+    param (
+        [Parameter(Mandatory=$true, ValueFromPipeline = $true)]
+        [int]$FirstValue,
+
+        [Parameter(Mandatory=$true, ValueFromPipeline = $true)]
+        [int]$SecondValue
+    )
+
+    if ($FirstValue -eq $SecondValue) {
+        return 1
+    }
+    else {
+        return 0
+    }
 }
 
 
@@ -1268,8 +1291,10 @@ function Get-ATAPHtmlReport {
 						if($RiskScore -and ($os -match "Win32NT" -and $Title -match "Win")){
 							htmlElement 'button' @{type = 'button'; class = 'navButton'; id = 'riskScoreBtn'; onclick = "clickButton('2')" } { "Risk Score" }
 						}
-						if($MITRE -and ($os -match "Win32NT" -and $Title -match "Win")){
-							htmlElement 'button' @{type = 'button'; class = 'navButton'; id = 'MITREBtn'; onclick = "clickButton('6')" } { "MITRE ATT&CK" }
+						if($MITRE){
+							if($Title -eq "Windows 10 Report" -and $os -match "Win32NT"){
+								htmlElement 'button' @{type = 'button'; class = 'navButton'; id = 'MITREBtn'; onclick = "clickButton('6')" } { "MITRE ATT&CK" }
+							}
 						}
 						htmlElement 'button' @{type = 'button'; class = 'navButton'; id = 'settingsOverviewBtn'; onclick = "clickButton('4')" } { "Hardening Settings" }
 						htmlElement 'button' @{type = 'button'; class = 'navButton'; id = 'referenceBtn'; onclick = "clickButton('3')" } { "About Us" }
@@ -1778,20 +1803,25 @@ function Get-ATAPHtmlReport {
 					}
 
 					if($MITRE) {
-						htmlElement 'div' @{class = 'tabContent'; id = 'MITRE' } {
-							htmlElement 'h1'@{} {"Version of CIS in MITRE Mapping and tests"}
-							htmlElement 'p'@{} {Compare-EqualCISVersions -Title:$Title -BasedOn:$BasedOn}
-							htmlElement 'h1'@{} {"MITRE ATT&CK"}
-							htmlElement 'p'@{} {'To get a quick overview of how good your system is hardened in terms of the MITRE ATT&CK Framework we made a heatmap.'}
-							htmlElement 'h2' @{id = 'CurrentATT&CKHeatpmap'} {"Current ATT&CK heatmap on tested System: "}
+						if($Title -eq "Windows 10 Report" -and $os -match "Win32NT"){
+							htmlElement 'div' @{class = 'tabContent'; id = 'MITRE' } {
+								htmlElement 'h1'@{} {"Version of CIS in MITRE Mapping and tests"}
+								htmlElement 'p'@{} {Compare-EqualCISVersions -Title:$Title -BasedOn:$BasedOn}
+								htmlElement 'h1'@{} {"MITRE ATT&CK"}
+								htmlElement 'p'@{} {'To get a quick overview of how good your system is hardened in terms of the MITRE ATT&CK Framework we made a heatmap.'}
+								htmlElement 'h2' @{id = 'CurrentATT&CKHeatpmap'} {"Current ATT&CK heatmap on tested System: "}
 
-							$Mappings = $Sections | 
-							Where-Object { $_.Title -eq "CIS Benchmarks" } | 
-							ForEach-Object { return $_.SubSections } | 
-							ForEach-Object { return $_.AuditInfos } | 
-							Merge-CisAuditsToMitreMap
+								$Mappings = $Sections | 
+								Where-Object { $_.Title -eq "CIS Benchmarks" } | 
+								ForEach-Object { return $_.SubSections } | 
+								ForEach-Object { return $_.AuditInfos } | 
+								Merge-CisAuditsToMitreMap
 
-							ConvertTo-HtmlTable $Mappings.map
+								ConvertTo-HtmlTable $Mappings.map
+							}
+						}
+						else {
+							Write-Host -ForegroundColor DarkYellow "Warning: Mitre Heatmap can only be used on a Windows System together with `"Windows 10 Report`". The Mitre Heatmap will not be generated"
 						}
 					}
 
