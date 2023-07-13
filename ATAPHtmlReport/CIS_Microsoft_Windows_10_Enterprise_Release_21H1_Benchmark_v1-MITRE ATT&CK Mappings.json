@@ -1323,15 +1323,25 @@
                  "Section":  "5",
                  "Recommendation":  "5.18",
                  "Profile":  "L2",
+                 "RecommendationTitle":  "Ensure \u0027Print Spooler (Spooler)\u0027 is set to \u0027Disabled\u0027",
+                 "Technique1":  "No MITRE ATT\u0026CK mapping",
+                 "Technique2":  null,
+                 "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                 "Mitigation2":  null
+             },
+    "5.19":  {
+                 "Section":  "5",
+                 "Recommendation":  "5.19",
+                 "Profile":  "L2",
                  "RecommendationTitle":  "Ensure \u0027Problem Reports and Solutions Control Panel Support (wercplsupport)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
                  "Technique2":  "T1070",
                  "Mitigation1":  "M1022",
                  "Mitigation2":  "M1041"
              },
-    "5.19":  {
+    "5.20":  {
                  "Section":  "5",
-                 "Recommendation":  "5.19",
+                 "Recommendation":  "5.20",
                  "Profile":  "L2",
                  "RecommendationTitle":  "Ensure \u0027Remote Access Auto Connection Manager (RasAuto)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
@@ -1339,9 +1349,9 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  null
              },
-    "5.20":  {
+    "5.21":  {
                  "Section":  "5",
-                 "Recommendation":  "5.20",
+                 "Recommendation":  "5.21",
                  "Profile":  "L2",
                  "RecommendationTitle":  "Ensure \u0027Remote Desktop Configuration (SessionEnv)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
@@ -1349,9 +1359,9 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  "M1026"
              },
-    "5.21":  {
+    "5.22":  {
                  "Section":  "5",
-                 "Recommendation":  "5.21",
+                 "Recommendation":  "5.22",
                  "Profile":  "L2",
                  "RecommendationTitle":  "Ensure \u0027Remote Desktop Services (TermService)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
@@ -1359,9 +1369,9 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  "M1018"
              },
-    "5.22":  {
+    "5.23":  {
                  "Section":  "5",
-                 "Recommendation":  "5.22",
+                 "Recommendation":  "5.23",
                  "Profile":  "L2",
                  "RecommendationTitle":  "Ensure \u0027Remote Desktop Services UserMode Port Redirector (UmRdpService)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
@@ -1369,9 +1379,9 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  "M1037"
              },
-    "5.23":  {
+    "5.24":  {
                  "Section":  "5",
-                 "Recommendation":  "5.23",
+                 "Recommendation":  "5.24",
                  "Profile":  "L1",
                  "RecommendationTitle":  "Ensure \u0027Remote Procedure Call (RPC) Locator (RpcLocator)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
@@ -1379,9 +1389,9 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  "M1028"
              },
-    "5.24":  {
+    "5.25":  {
                  "Section":  "5",
-                 "Recommendation":  "5.24",
+                 "Recommendation":  "5.25",
                  "Profile":  "L2",
                  "RecommendationTitle":  "Ensure \u0027Remote Registry (RemoteRegistry)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
@@ -1389,21 +1399,11 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  "M1024"
              },
-    "5.25":  {
-                 "Section":  "5",
-                 "Recommendation":  "5.25",
-                 "Profile":  "L1",
-                 "RecommendationTitle":  "Ensure \u0027Routing and Remote Access (RemoteAccess)\u0027 is set to \u0027Disabled\u0027",
-                 "Technique1":  "T1569",
-                 "Technique2":  "T1011",
-                 "Mitigation1":  "M1022",
-                 "Mitigation2":  "M1028"
-             },
     "5.26":  {
                  "Section":  "5",
                  "Recommendation":  "5.26",
-                 "Profile":  "L2",
-                 "RecommendationTitle":  "Ensure \u0027Server (LanmanServer)\u0027 is set to \u0027Disabled\u0027",
+                 "Profile":  "L1",
+                 "RecommendationTitle":  "Ensure \u0027Routing and Remote Access (RemoteAccess)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
                  "Technique2":  "T1011",
                  "Mitigation1":  "M1022",
@@ -1412,8 +1412,8 @@
     "5.27":  {
                  "Section":  "5",
                  "Recommendation":  "5.27",
-                 "Profile":  "L1",
-                 "RecommendationTitle":  "Ensure \u0027Simple TCP/IP Services (simptcp)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+                 "Profile":  "L2",
+                 "RecommendationTitle":  "Ensure \u0027Server (LanmanServer)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
                  "Technique2":  "T1011",
                  "Mitigation1":  "M1022",
@@ -1422,6 +1422,16 @@
     "5.28":  {
                  "Section":  "5",
                  "Recommendation":  "5.28",
+                 "Profile":  "L1",
+                 "RecommendationTitle":  "Ensure \u0027Simple TCP/IP Services (simptcp)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+                 "Technique1":  "T1569",
+                 "Technique2":  "T1011",
+                 "Mitigation1":  "M1022",
+                 "Mitigation2":  "M1028"
+             },
+    "5.29":  {
+                 "Section":  "5",
+                 "Recommendation":  "5.29",
                  "Profile":  "L2",
                  "RecommendationTitle":  "Ensure \u0027SNMP Service (SNMP)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
                  "Technique1":  "T1569",
@@ -1429,9 +1439,9 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  "M1042"
              },
-    "5.29":  {
+    "5.30":  {
                  "Section":  "5",
-                 "Recommendation":  "5.29",
+                 "Recommendation":  "5.30",
                  "Profile":  "L1",
                  "RecommendationTitle":  "Ensure \u0027Special Administration Console Helper (sacsvr)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
                  "Technique1":  "T1569",
@@ -1439,21 +1449,11 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  null
              },
-    "5.30":  {
-                 "Section":  "5",
-                 "Recommendation":  "5.30",
-                 "Profile":  "L1",
-                 "RecommendationTitle":  "Ensure \u0027SSDP Discovery (SSDPSRV)\u0027 is set to \u0027Disabled\u0027",
-                 "Technique1":  "T1569",
-                 "Technique2":  "T1120",
-                 "Mitigation1":  "M1022",
-                 "Mitigation2":  null
-             },
     "5.31":  {
                  "Section":  "5",
                  "Recommendation":  "5.31",
                  "Profile":  "L1",
-                 "RecommendationTitle":  "Ensure \u0027UPnP Device Host (upnphost)\u0027 is set to \u0027Disabled\u0027",
+                 "RecommendationTitle":  "Ensure \u0027SSDP Discovery (SSDPSRV)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
                  "Technique2":  "T1120",
                  "Mitigation1":  "M1022",
@@ -1463,15 +1463,25 @@
                  "Section":  "5",
                  "Recommendation":  "5.32",
                  "Profile":  "L1",
+                 "RecommendationTitle":  "Ensure \u0027UPnP Device Host (upnphost)\u0027 is set to \u0027Disabled\u0027",
+                 "Technique1":  "T1569",
+                 "Technique2":  "T1120",
+                 "Mitigation1":  "M1022",
+                 "Mitigation2":  null
+             },
+    "5.33":  {
+                 "Section":  "5",
+                 "Recommendation":  "5.33",
+                 "Profile":  "L1",
                  "RecommendationTitle":  "Ensure \u0027Web Management Service (WMSvc)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
                  "Technique1":  "T1569",
                  "Technique2":  "T1505",
                  "Mitigation1":  "M1022",
                  "Mitigation2":  "M1047"
              },
-    "5.33":  {
+    "5.34":  {
                  "Section":  "5",
-                 "Recommendation":  "5.33",
+                 "Recommendation":  "5.34",
                  "Profile":  "L2",
                  "RecommendationTitle":  "Ensure \u0027Windows Error Reporting Service (WerSvc)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
@@ -1479,9 +1489,9 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  "M1041"
              },
-    "5.34":  {
+    "5.35":  {
                  "Section":  "5",
-                 "Recommendation":  "5.34",
+                 "Recommendation":  "5.35",
                  "Profile":  "L2",
                  "RecommendationTitle":  "Ensure \u0027Windows Event Collector (Wecsvc)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
@@ -1489,21 +1499,11 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  null
              },
-    "5.35":  {
-                 "Section":  "5",
-                 "Recommendation":  "5.35",
-                 "Profile":  "L1",
-                 "RecommendationTitle":  "Ensure \u0027Windows Media Player Network Sharing Service (WMPNetworkSvc)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
-                 "Technique1":  "T1569",
-                 "Technique2":  "T1048",
-                 "Mitigation1":  "M1022",
-                 "Mitigation2":  "M1037"
-             },
     "5.36":  {
                  "Section":  "5",
                  "Recommendation":  "5.36",
                  "Profile":  "L1",
-                 "RecommendationTitle":  "Ensure \u0027Windows Mobile Hotspot Service (icssvc)\u0027 is set to \u0027Disabled\u0027",
+                 "RecommendationTitle":  "Ensure \u0027Windows Media Player Network Sharing Service (WMPNetworkSvc)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
                  "Technique1":  "T1569",
                  "Technique2":  "T1048",
                  "Mitigation1":  "M1022",
@@ -1512,8 +1512,8 @@
     "5.37":  {
                  "Section":  "5",
                  "Recommendation":  "5.37",
-                 "Profile":  "L2",
-                 "RecommendationTitle":  "Ensure \u0027Windows Push Notifications System Service (WpnService)\u0027 is set to \u0027Disabled\u0027",
+                 "Profile":  "L1",
+                 "RecommendationTitle":  "Ensure \u0027Windows Mobile Hotspot Service (icssvc)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
                  "Technique2":  "T1048",
                  "Mitigation1":  "M1022",
@@ -1523,15 +1523,25 @@
                  "Section":  "5",
                  "Recommendation":  "5.38",
                  "Profile":  "L2",
+                 "RecommendationTitle":  "Ensure \u0027Windows Push Notifications System Service (WpnService)\u0027 is set to \u0027Disabled\u0027",
+                 "Technique1":  "T1569",
+                 "Technique2":  "T1048",
+                 "Mitigation1":  "M1022",
+                 "Mitigation2":  "M1037"
+             },
+    "5.39":  {
+                 "Section":  "5",
+                 "Recommendation":  "5.39",
+                 "Profile":  "L2",
                  "RecommendationTitle":  "Ensure \u0027Windows PushToInstall Service (PushToInstall)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
                  "Technique2":  "T1072",
                  "Mitigation1":  "M1022",
                  "Mitigation2":  "M1026"
              },
-    "5.39":  {
+    "5.40":  {
                  "Section":  "5",
-                 "Recommendation":  "5.39",
+                 "Recommendation":  "5.40",
                  "Profile":  "L2",
                  "RecommendationTitle":  "Ensure \u0027Windows Remote Management (WS-Management) (WinRM)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
@@ -1539,9 +1549,9 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  "M1042"
              },
-    "5.40":  {
+    "5.41":  {
                  "Section":  "5",
-                 "Recommendation":  "5.40",
+                 "Recommendation":  "5.41",
                  "Profile":  "L1",
                  "RecommendationTitle":  "Ensure \u0027World Wide Web Publishing Service (W3SVC)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
                  "Technique1":  "T1569",
@@ -1549,9 +1559,9 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  "M1047"
              },
-    "5.41":  {
+    "5.42":  {
                  "Section":  "5",
-                 "Recommendation":  "5.41",
+                 "Recommendation":  "5.42",
                  "Profile":  "L1",
                  "RecommendationTitle":  "Ensure \u0027Xbox Accessory Management Service (XboxGipSvc)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
@@ -1559,21 +1569,11 @@
                  "Mitigation1":  "M1022",
                  "Mitigation2":  null
              },
-    "5.42":  {
-                 "Section":  "5",
-                 "Recommendation":  "5.42",
-                 "Profile":  "L1",
-                 "RecommendationTitle":  "Ensure \u0027Xbox Live Auth Manager (XblAuthManager)\u0027 is set to \u0027Disabled\u0027",
-                 "Technique1":  "T1569",
-                 "Technique2":  "T1048",
-                 "Mitigation1":  "M1022",
-                 "Mitigation2":  "M1037"
-             },
     "5.43":  {
                  "Section":  "5",
                  "Recommendation":  "5.43",
                  "Profile":  "L1",
-                 "RecommendationTitle":  "Ensure \u0027Xbox Live Game Save (XblGameSave)\u0027 is set to \u0027Disabled\u0027",
+                 "RecommendationTitle":  "Ensure \u0027Xbox Live Auth Manager (XblAuthManager)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
                  "Technique2":  "T1048",
                  "Mitigation1":  "M1022",
@@ -1582,6 +1582,16 @@
     "5.44":  {
                  "Section":  "5",
                  "Recommendation":  "5.44",
+                 "Profile":  "L1",
+                 "RecommendationTitle":  "Ensure \u0027Xbox Live Game Save (XblGameSave)\u0027 is set to \u0027Disabled\u0027",
+                 "Technique1":  "T1569",
+                 "Technique2":  "T1048",
+                 "Mitigation1":  "M1022",
+                 "Mitigation2":  "M1037"
+             },
+    "5.45":  {
+                 "Section":  "5",
+                 "Recommendation":  "5.45",
                  "Profile":  "L1",
                  "RecommendationTitle":  "Ensure \u0027Xbox Live Networking Service (XboxNetApiSvc)\u0027 is set to \u0027Disabled\u0027",
                  "Technique1":  "T1569",
@@ -2263,15 +2273,25 @@
                    "Section":  "18.3",
                    "Recommendation":  "18.3.5",
                    "Profile":  "L1",
+                   "RecommendationTitle":  "Ensure ?Limits print driver installation to Administrators? is set to ?Enabled?",
+                   "Technique1":  "T1203",
+                   "Technique2":  null,
+                   "Mitigation1":  "M1050",
+                   "Mitigation2":  null
+               },
+    "18.3.6":  {
+                   "Section":  "18.3",
+                   "Recommendation":  "18.3.6",
+                   "Profile":  "L1",
                    "RecommendationTitle":  "Ensure \u0027NetBT NodeType configuration\u0027 is set to \u0027Enabled: P-node (recommended)\u0027",
                    "Technique1":  "T1018",
                    "Technique2":  null,
                    "Mitigation1":  "No MITRE ATT\u0026CK Mitigation",
                    "Mitigation2":  null
                },
-    "18.3.6":  {
+    "18.3.7":  {
                    "Section":  "18.3",
-                   "Recommendation":  "18.3.6",
+                   "Recommendation":  "18.3.7",
                    "Profile":  "L1",
                    "RecommendationTitle":  "Ensure \u0027WDigest Authentication\u0027 is set to \u0027Disabled\u0027",
                    "Technique1":  "T1555",
@@ -2412,6 +2432,16 @@
     "18.5.4.1":  {
                      "Section":  "18.5.4",
                      "Recommendation":  "18.5.4.1",
+                     "Profile":  "L1",
+                     "RecommendationTitle":  "Ensure ?Configure DNS over HTTPS (DoH) name resolution? is set to ?Enabled: Allow DoH? or higher",
+                     "Technique1":  "No MITRE ATT\u0026CK mapping",
+                     "Technique2":  null,
+                     "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                     "Mitigation2":  null
+                 },
+    "18.5.4.2":  {
+                     "Section":  "18.5.4",
+                     "Recommendation":  "18.5.4.2",
                      "Profile":  "L1",
                      "RecommendationTitle":  "Ensure \u0027Turn off multicast name resolution\u0027 is set to \u0027Enabled\u0027",
                      "Technique1":  "T1557",
@@ -2569,6 +2599,36 @@
                         "Mitigation1":  "M1028",
                         "Mitigation2":  null
                     },
+    "18.6.1":  {
+                   "Section":  "18.6",
+                   "Recommendation":  "18.6.1",
+                   "Profile":  "L1",
+                   "RecommendationTitle":  "Ensure \u0027Allow Print Spooler to accept client connections\u0027 is set to \u0027Disabled\u0027",
+                   "Technique1":  "No MITRE ATT\u0026CK mapping",
+                   "Technique2":  null,
+                   "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                   "Mitigation2":  null
+               },
+    "18.6.2":  {
+                   "Section":  "18.6",
+                   "Recommendation":  "18.6.2",
+                   "Profile":  "L1",
+                   "RecommendationTitle":  "Ensure \u0027Point and Print Restrictions: When installing drivers for a new connection\u0027 is set to \u0027Enabled: Show warning and elevation prompt\u0027",
+                   "Technique1":  "No MITRE ATT\u0026CK mapping",
+                   "Technique2":  null,
+                   "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                   "Mitigation2":  null
+               },
+    "18.6.3":  {
+                   "Section":  "18.6",
+                   "Recommendation":  "18.6.3",
+                   "Profile":  "L1",
+                   "RecommendationTitle":  "Ensure \u0027Point and Print Restrictions: When updating drivers for an existing connection\u0027 is set to \u0027Enabled: Show warning and elevation prompt\u0027",
+                   "Technique1":  null,
+                   "Technique2":  null,
+                   "Mitigation1":  null,
+                   "Mitigation2":  null
+               },
     "18.7.1.1":  {
                      "Section":  "18.7.1",
                      "Recommendation":  "18.7.1.1",
@@ -2583,7 +2643,7 @@
                      "Section":  "18.8.3",
                      "Recommendation":  "18.8.3.1",
                      "Profile":  "L1",
-                     "RecommendationTitle":  "Ensure \u0027Include command line in process creation events\u0027 is set to \u0027Disabled\u0027",
+                     "RecommendationTitle":  "Ensure \u0027Include command line in process creation events\u0027 is set to \u0027Enabled\u0027",
                      "Technique1":  "T1552",
                      "Technique2":  null,
                      "Mitigation1":  "M1041",
@@ -2729,6 +2789,16 @@
                        "Mitigation1":  "M1034",
                        "Mitigation2":  null
                    },
+    "18.8.7.2":  {
+                     "Section":  "18.8.7.2",
+                     "Recommendation":  "18.8.7.2",
+                     "Profile":  "L1",
+                     "RecommendationTitle":  "Ensure \u0027Prevent device metadata retrieval from the Internet\u0027 is set to \u0027Enabled\u0027",
+                     "Technique1":  "No MITRE ATT\u0026CK mapping",
+                     "Technique2":  null,
+                     "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                     "Mitigation2":  null
+                 },
     "18.8.14.1":  {
                       "Section":  "18.8.14",
                       "Recommendation":  "18.8.14.1",
@@ -3139,9 +3209,9 @@
                       "Mitigation1":  "M1026",
                       "Mitigation2":  null
                   },
-    "18.8.47.5.1":  {
-                        "Section":  "18.8.47.5",
-                        "Recommendation":  "18.8.47.5.1",
+    "18.8.48.5.1":  {
+                        "Section":  "18.8.48.5",
+                        "Recommendation":  "18.8.48.5.1",
                         "Profile":  "L2",
                         "RecommendationTitle":  "Ensure \u0027Microsoft Support Diagnostic Tool: Turn on MSDT interactive communication with support provider\u0027 is set to \u0027Disabled\u0027",
                         "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -3149,9 +3219,9 @@
                         "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                         "Mitigation2":  null
                     },
-    "18.8.47.11.1":  {
-                         "Section":  "18.8.47.11",
-                         "Recommendation":  "18.8.47.11.1",
+    "18.8.48.11.1":  {
+                         "Section":  "18.8.48.11",
+                         "Recommendation":  "18.8.48.11.1",
                          "Profile":  "L2",
                          "RecommendationTitle":  "Ensure \u0027Enable/Disable PerfTrack\u0027 is set to \u0027Disabled\u0027",
                          "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -3160,7 +3230,7 @@
                          "Mitigation2":  null
                      },
     "18.8.49.1":  {
-                      "Section":  "18.8.49",
+                      "Section":  "18.8.50",
                       "Recommendation":  "18.8.49.1",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Turn off the advertising ID\u0027 is set to \u0027Enabled\u0027",
@@ -3169,9 +3239,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.8.52.1.1":  {
-                        "Section":  "18.8.52.1",
-                        "Recommendation":  "18.8.52.1.1",
+    "18.8.53.1.1":  {
+                        "Section":  "18.8.53.1",
+                        "Recommendation":  "18.8.53.1.1",
                         "Profile":  "L2",
                         "RecommendationTitle":  "Ensure \u0027Enable Windows NTP Client\u0027 is set to \u0027Enabled\u0027",
                         "Technique1":  "T1124",
@@ -3179,9 +3249,9 @@
                         "Mitigation1":  "No MITRE ATT\u0026CK Mitigation",
                         "Mitigation2":  null
                     },
-    "18.8.52.1.2":  {
-                        "Section":  "18.8.52.1",
-                        "Recommendation":  "18.8.52.1.2",
+    "18.8.53.1.2":  {
+                        "Section":  "18.8.53.1",
+                        "Recommendation":  "18.8.53.1.2",
                         "Profile":  "L2",
                         "RecommendationTitle":  "Ensure \u0027Enable Windows NTP Server\u0027 is set to \u0027Disabled\u0027",
                         "Technique1":  "T1124",
@@ -3719,29 +3789,39 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK Mitigation",
                       "Mitigation2":  null
                   },
-    "18.9.13.1":  {
-                      "Section":  "18.9.13",
-                      "Recommendation":  "18.9.13.1",
-                      "Profile":  "L2",
-                      "RecommendationTitle":  "Ensure \u0027Turn off cloud optimized content\u0027 is set to \u0027Enabled\u0027",
-                      "Technique1":  "No MITRE ATT\u0026CK mapping",
-                      "Technique2":  null,
-                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
-                      "Mitigation2":  null
-                  },
-    "18.9.13.2":  {
-                      "Section":  "18.9.13",
-                      "Recommendation":  "18.9.13.2",
-                      "Profile":  "L1",
-                      "RecommendationTitle":  "Ensure \u0027Turn off Microsoft consumer experiences\u0027 is set to \u0027Enabled\u0027",
-                      "Technique1":  "No MITRE ATT\u0026CK mapping",
-                      "Technique2":  null,
-                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
-                      "Mitigation2":  null
-                  },
-    "18.9.14.1":  {
-                      "Section":  "18.9.14",
-                      "Recommendation":  "18.9.14.1",
+    "18.19.14.1":  {
+                       "Section":  "18.9.14",
+                       "Recommendation":  "18.19.14.1",
+                       "Profile":  "L1",
+                       "RecommendationTitle":  "Ensure ?Turn off cloud consumer account state content? is set to ?Enabled?",
+                       "Technique1":  "No MITRE ATT\u0026CK mapping",
+                       "Technique2":  null,
+                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                       "Mitigation2":  null
+                   },
+    "18.19.14.2":  {
+                       "Section":  "18.9.14",
+                       "Recommendation":  "18.19.14.2",
+                       "Profile":  "L2",
+                       "RecommendationTitle":  "Ensure \u0027Turn off cloud optimized content\u0027 is set to \u0027Enabled\u0027",
+                       "Technique1":  "No MITRE ATT\u0026CK mapping",
+                       "Technique2":  null,
+                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                       "Mitigation2":  null
+                   },
+    "18.19.14.3":  {
+                       "Section":  "18.9.14",
+                       "Recommendation":  "18.19.14.3",
+                       "Profile":  "L1",
+                       "RecommendationTitle":  "Ensure \u0027Turn off Microsoft consumer experiences\u0027 is set to \u0027Enabled\u0027",
+                       "Technique1":  "No MITRE ATT\u0026CK mapping",
+                       "Technique2":  null,
+                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                       "Mitigation2":  null
+                   },
+    "18.9.15.1":  {
+                      "Section":  "18.9.15",
+                      "Recommendation":  "18.9.15.1",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Require pin for pairing\u0027 is set to \u0027Enabled: First Time\u0027 OR \u0027Enabled: Always\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -3749,41 +3829,11 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.15.1":  {
-                      "Section":  "18.9.15",
-                      "Recommendation":  "18.9.15.1",
-                      "Profile":  "L1",
-                      "RecommendationTitle":  "Ensure \u0027Do not display the password reveal button\u0027 is set to \u0027Enabled\u0027",
-                      "Technique1":  "No MITRE ATT\u0026CK mapping",
-                      "Technique2":  null,
-                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
-                      "Mitigation2":  null
-                  },
-    "18.9.15.2":  {
-                      "Section":  "18.9.15",
-                      "Recommendation":  "18.9.15.2",
-                      "Profile":  "L1",
-                      "RecommendationTitle":  "Ensure \u0027Enumerate administrator accounts on elevation\u0027 is set to \u0027Disabled\u0027",
-                      "Technique1":  "T1087",
-                      "Technique2":  null,
-                      "Mitigation1":  "M1028",
-                      "Mitigation2":  null
-                  },
-    "18.9.15.3":  {
-                      "Section":  "18.9.15",
-                      "Recommendation":  "18.9.15.3",
-                      "Profile":  "L1",
-                      "RecommendationTitle":  "Ensure \u0027Prevent the use of security questions for local accounts\u0027 is set to \u0027Enabled\u0027",
-                      "Technique1":  "T1589",
-                      "Technique2":  null,
-                      "Mitigation1":  "M1056",
-                      "Mitigation2":  null
-                  },
     "18.9.16.1":  {
                       "Section":  "18.9.16",
                       "Recommendation":  "18.9.16.1",
                       "Profile":  "L1",
-                      "RecommendationTitle":  "Ensure \u0027Allow Telemetry\u0027 is set to \u0027Enabled: 0 - Security [Enterprise Only]\u0027 or \u0027Enabled: 1 - Basic\u0027",
+                      "RecommendationTitle":  "Ensure \u0027Do not display the password reveal button\u0027 is set to \u0027Enabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
                       "Technique2":  null,
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
@@ -3792,6 +3842,36 @@
     "18.9.16.2":  {
                       "Section":  "18.9.16",
                       "Recommendation":  "18.9.16.2",
+                      "Profile":  "L1",
+                      "RecommendationTitle":  "Ensure \u0027Enumerate administrator accounts on elevation\u0027 is set to \u0027Disabled\u0027",
+                      "Technique1":  "T1087",
+                      "Technique2":  null,
+                      "Mitigation1":  "M1028",
+                      "Mitigation2":  null
+                  },
+    "18.9.16.3":  {
+                      "Section":  "18.9.16",
+                      "Recommendation":  "18.9.16.3",
+                      "Profile":  "L1",
+                      "RecommendationTitle":  "Ensure \u0027Prevent the use of security questions for local accounts\u0027 is set to \u0027Enabled\u0027",
+                      "Technique1":  "T1589",
+                      "Technique2":  null,
+                      "Mitigation1":  "M1056",
+                      "Mitigation2":  null
+                  },
+    "18.9.17.1":  {
+                      "Section":  "18.9.17",
+                      "Recommendation":  "18.9.17.1",
+                      "Profile":  "L1",
+                      "RecommendationTitle":  "Ensure \u0027Allow Diagnostic Data\u0027 is set to \u0027Enabled: Diagnostic data off (not recommended)\u0027 or \u0027Enabled: Send required\u0027",
+                      "Technique1":  "No MITRE ATT\u0026CK mapping",
+                      "Technique2":  null,
+                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                      "Mitigation2":  null
+                  },
+    "18.9.17.2":  {
+                      "Section":  "18.9.17",
+                      "Recommendation":  "18.9.17.2",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Configure Authenticated Proxy usage for the Connected User Experience and Telemetry service\u0027 is set to \u0027Enabled: Disable Authenticated Proxy usage\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -3799,9 +3879,19 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.16.3":  {
-                      "Section":  "18.9.16",
-                      "Recommendation":  "18.9.16.3",
+    "18.9.17.3":  {
+                      "Section":  "18.9.17",
+                      "Recommendation":  "18.9.17.3",
+                      "Profile":  "L1",
+                      "RecommendationTitle":  "Ensure ?Disable OneSettings Downloads? is set to ?Enabled?",
+                      "Technique1":  "No MITRE ATT\u0026CK mapping",
+                      "Technique2":  null,
+                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                      "Mitigation2":  null
+                  },
+    "18.9.17.4":  {
+                      "Section":  "18.9.17",
+                      "Recommendation":  "18.9.17.4",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Do not show feedback notifications\u0027 is set to \u0027Enabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -3809,19 +3899,49 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.16.4":  {
-                      "Section":  "18.9.16",
-                      "Recommendation":  "18.9.16.4",
+    "18.9.17.5":  {
+                      "Section":  "18.9.17",
+                      "Recommendation":  "18.9.17.5",
                       "Profile":  "L1",
-                      "RecommendationTitle":  "Ensure \u0027Toggle user control over Insider builds\u0027 is set to \u0027Disabled\u0027",
+                      "RecommendationTitle":  "Ensure ?Enable OneSettings Auditing? is set to ?Enabled?",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
                       "Technique2":  null,
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.17.1":  {
+    "18.9.17.6":  {
                       "Section":  "18.9.17",
-                      "Recommendation":  "18.9.17.1",
+                      "Recommendation":  "18.9.17.6",
+                      "Profile":  "L1",
+                      "RecommendationTitle":  "Ensure ?Limit Diagnostic Log Collection? is set to ?Enabled?",
+                      "Technique1":  "No MITRE ATT\u0026CK mapping",
+                      "Technique2":  null,
+                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                      "Mitigation2":  null
+                  },
+    "18.9.17.7":  {
+                      "Section":  "18.9.17",
+                      "Recommendation":  "18.9.17.7",
+                      "Profile":  "L1",
+                      "RecommendationTitle":  "Ensure ?Limit Dump Collection? is set to ?Enabled?",
+                      "Technique1":  "No MITRE ATT\u0026CK mapping",
+                      "Technique2":  null,
+                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                      "Mitigation2":  null
+                  },
+    "18.9.17.8":  {
+                      "Section":  "18.9.17",
+                      "Recommendation":  "18.9.17.8",
+                      "Profile":  "L1",
+                      "RecommendationTitle":  "Ensure \u0027Toggle user control over Insider builds\u0027 is set to \u0027Disabled\u0027 (Automated)",
+                      "Technique1":  "No MITRE ATT\u0026CK mapping",
+                      "Technique2":  null,
+                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                      "Mitigation2":  null
+                  },
+    "18.9.18.1":  {
+                      "Section":  "18.9.18",
+                      "Recommendation":  "18.9.18.1",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Download Mode\u0027 is NOT set to \u0027Enabled: Internet\u0027",
                       "Technique1":  "T1601",
@@ -3829,9 +3949,9 @@
                       "Mitigation1":  "M1045",
                       "Mitigation2":  null
                   },
-    "18.9.26.1.1":  {
-                        "Section":  "18.9.26.1",
-                        "Recommendation":  "18.9.26.1.1",
+    "18.9.27.1.1":  {
+                        "Section":  "18.9.27.1",
+                        "Recommendation":  "18.9.27.1.1",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Application: Control Event Log behavior when the log file reaches its maximum size\u0027 is set to \u0027Disabled\u0027",
                         "Technique1":  "T1562",
@@ -3839,9 +3959,9 @@
                         "Mitigation1":  "M1022",
                         "Mitigation2":  null
                     },
-    "18.9.26.1.2":  {
-                        "Section":  "18.9.26.1",
-                        "Recommendation":  "18.9.26.1.2",
+    "18.9.27.1.2":  {
+                        "Section":  "18.9.27.1",
+                        "Recommendation":  "18.9.27.1.2",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Application: Specify the maximum log file size (KB)\u0027 is set to \u0027Enabled: 32,768 or greater\u0027",
                         "Technique1":  "T1562",
@@ -3849,9 +3969,9 @@
                         "Mitigation1":  "M1022",
                         "Mitigation2":  null
                     },
-    "18.9.26.2.1":  {
-                        "Section":  "18.9.26.2",
-                        "Recommendation":  "18.9.26.2.1",
+    "18.9.27.2.1":  {
+                        "Section":  "18.9.27.2",
+                        "Recommendation":  "18.9.27.2.1",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Security: Control Event Log behavior when the log file reaches its maximum size\u0027 is set to \u0027Disabled\u0027",
                         "Technique1":  "T1562",
@@ -3859,9 +3979,9 @@
                         "Mitigation1":  "M1022",
                         "Mitigation2":  null
                     },
-    "18.9.26.2.2":  {
-                        "Section":  "18.9.26.2",
-                        "Recommendation":  "18.9.26.2.2",
+    "18.9.27.2.2":  {
+                        "Section":  "18.9.27.2",
+                        "Recommendation":  "18.9.27.2.2",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Security: Specify the maximum log file size (KB)\u0027 is set to \u0027Enabled: 196,608 or greater\u0027",
                         "Technique1":  "T1562",
@@ -3869,9 +3989,9 @@
                         "Mitigation1":  "M1022",
                         "Mitigation2":  null
                     },
-    "18.9.26.3.1":  {
-                        "Section":  "18.9.26.3",
-                        "Recommendation":  "18.9.26.3.1",
+    "18.9.27.3.1":  {
+                        "Section":  "18.9.27.3",
+                        "Recommendation":  "18.9.27.3.1",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Setup: Control Event Log behavior when the log file reaches its maximum size\u0027 is set to \u0027Disabled\u0027",
                         "Technique1":  "T1562",
@@ -3879,9 +3999,9 @@
                         "Mitigation1":  "M1022",
                         "Mitigation2":  null
                     },
-    "18.9.26.3.2":  {
-                        "Section":  "18.9.26.3",
-                        "Recommendation":  "18.9.26.3.2",
+    "18.9.27.3.2":  {
+                        "Section":  "18.9.27.3",
+                        "Recommendation":  "18.9.27.3.2",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Setup: Specify the maximum log file size (KB)\u0027 is set to \u0027Enabled: 32,768 or greater\u0027",
                         "Technique1":  "T1562",
@@ -3889,9 +4009,9 @@
                         "Mitigation1":  "M1022",
                         "Mitigation2":  null
                     },
-    "18.9.26.4.1":  {
-                        "Section":  "18.9.26.4",
-                        "Recommendation":  "18.9.26.4.1",
+    "18.9.27.4.1":  {
+                        "Section":  "18.9.27.4",
+                        "Recommendation":  "18.9.27.4.1",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027System: Control Event Log behavior when the log file reaches its maximum size\u0027 is set to \u0027Disabled\u0027",
                         "Technique1":  "T1562",
@@ -3899,9 +4019,9 @@
                         "Mitigation1":  "M1022",
                         "Mitigation2":  null
                     },
-    "18.9.26.4.2":  {
-                        "Section":  "18.9.26.4",
-                        "Recommendation":  "18.9.26.4.2",
+    "18.9.27.4.2":  {
+                        "Section":  "18.9.27.4",
+                        "Recommendation":  "18.9.27.4.2",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027System: Specify the maximum log file size (KB)\u0027 is set to \u0027Enabled: 32,768 or greater\u0027",
                         "Technique1":  "T1562",
@@ -3909,9 +4029,9 @@
                         "Mitigation1":  "M1022",
                         "Mitigation2":  null
                     },
-    "18.9.30.2":  {
-                      "Section":  "18.9.30",
-                      "Recommendation":  "18.9.30.2",
+    "18.9.31.2":  {
+                      "Section":  "18.9.31",
+                      "Recommendation":  "18.9.31.2",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Turn off Data Execution Prevention for Explorer\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "T1553",
@@ -3919,9 +4039,9 @@
                       "Mitigation1":  "M1038",
                       "Mitigation2":  null
                   },
-    "18.9.30.3":  {
-                      "Section":  "18.9.30",
-                      "Recommendation":  "18.9.30.3",
+    "18.9.31.3":  {
+                      "Section":  "18.9.31",
+                      "Recommendation":  "18.9.31.3",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Turn off heap termination on corruption\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -3929,9 +4049,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.30.4":  {
-                      "Section":  "18.9.30",
-                      "Recommendation":  "18.9.30.4",
+    "18.9.31.4":  {
+                      "Section":  "18.9.31",
+                      "Recommendation":  "18.9.31.4",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Turn off shell protocol protected mode\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "T1059",
@@ -3939,9 +4059,9 @@
                       "Mitigation1":  "M1038",
                       "Mitigation2":  null
                   },
-    "18.9.35.1":  {
-                      "Section":  "18.9.35",
-                      "Recommendation":  "18.9.35.1",
+    "18.9.36.1":  {
+                      "Section":  "18.9.36",
+                      "Recommendation":  "18.9.36.1",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Prevent the computer from joining a homegroup\u0027 is set to \u0027Enabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -3949,9 +4069,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.39.1":  {
-                      "Section":  "18.9.39",
-                      "Recommendation":  "18.9.39.1",
+    "18.9.41.1":  {
+                      "Section":  "18.9.41",
+                      "Recommendation":  "18.9.41.1",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Turn off location\u0027 is set to \u0027Enabled\u0027",
                       "Technique1":  "T1591",
@@ -3959,9 +4079,9 @@
                       "Mitigation1":  "M1056",
                       "Mitigation2":  null
                   },
-    "18.9.43.1":  {
-                      "Section":  "18.9.43",
-                      "Recommendation":  "18.9.43.1",
+    "18.9.45.1":  {
+                      "Section":  "18.9.45",
+                      "Recommendation":  "18.9.45.1",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Allow Message Service Cloud Sync\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -3969,9 +4089,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.44.1":  {
-                      "Section":  "18.9.44",
-                      "Recommendation":  "18.9.44.1",
+    "18.9.46.1":  {
+                      "Section":  "18.9.46",
+                      "Recommendation":  "18.9.46.1",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Block all consumer Microsoft account user authentication\u0027 is set to \u0027Enabled\u0027",
                       "Technique1":  "T1078",
@@ -3979,9 +4099,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK Mitigation",
                       "Mitigation2":  null
                   },
-    "18.9.45.14":  {
-                       "Section":  "18.9.45",
-                       "Recommendation":  "18.9.45.14",
+    "18.9.47.14":  {
+                       "Section":  "18.9.47",
+                       "Recommendation":  "18.9.47.14",
                        "Profile":  "L1",
                        "RecommendationTitle":  "Ensure \u0027Configure detection for potentially unwanted applications\u0027 is set to \u0027Enabled: Block\u0027",
                        "Technique1":  "T1204",
@@ -3989,9 +4109,9 @@
                        "Mitigation1":  "M1038",
                        "Mitigation2":  null
                    },
-    "18.9.45.15":  {
-                       "Section":  "18.9.45",
-                       "Recommendation":  "18.9.45.15",
+    "18.9.47.15":  {
+                       "Section":  "18.9.47",
+                       "Recommendation":  "18.9.47.15",
                        "Profile":  "L1",
                        "RecommendationTitle":  "Ensure \u0027Turn off Microsoft Defender AntiVirus\u0027 is set to \u0027Disabled\u0027",
                        "Technique1":  "T1553",
@@ -3999,9 +4119,9 @@
                        "Mitigation1":  "M1028",
                        "Mitigation2":  null
                    },
-    "18.9.45.3.1":  {
-                        "Section":  "18.9.45.3",
-                        "Recommendation":  "18.9.45.3.1",
+    "18.9.47.4.1":  {
+                        "Section":  "18.9.47.4",
+                        "Recommendation":  "18.9.47.4.1",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Configure local setting override for reporting to Microsoft MAPS\u0027 is set to \u0027Disabled\u0027",
                         "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4009,9 +4129,9 @@
                         "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                         "Mitigation2":  null
                     },
-    "18.9.45.3.2":  {
-                        "Section":  "18.9.45.3",
-                        "Recommendation":  "18.9.45.3.2",
+    "18.9.47.4.2":  {
+                        "Section":  "18.9.47.4",
+                        "Recommendation":  "18.9.47.4.2",
                         "Profile":  "L2",
                         "RecommendationTitle":  "Ensure \u0027Join Microsoft MAPS\u0027 is set to \u0027Disabled\u0027",
                         "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4019,9 +4139,9 @@
                         "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                         "Mitigation2":  null
                     },
-    "18.9.45.4.1.1":  {
-                          "Section":  "18.9.45.4.1",
-                          "Recommendation":  "18.9.45.4.1.1",
+    "18.9.47.5.1.1":  {
+                          "Section":  "18.9.47.5.1",
+                          "Recommendation":  "18.9.47.5.1.1",
                           "Profile":  "L1",
                           "RecommendationTitle":  "Ensure \u0027Configure Attack Surface Reduction rules\u0027 is set to \u0027Enabled\u0027",
                           "Technique1":  "T1559",
@@ -4029,9 +4149,9 @@
                           "Mitigation1":  "M1040",
                           "Mitigation2":  "M1038"
                       },
-    "18.9.45.4.1.2":  {
-                          "Section":  "18.9.45.4.1",
-                          "Recommendation":  "18.9.45.4.1.2",
+    "18.9.47.5.1.2":  {
+                          "Section":  "18.9.47.5.1",
+                          "Recommendation":  "18.9.47.5.1.2",
                           "Profile":  "L1",
                           "RecommendationTitle":  "Ensure \u0027Configure Attack Surface Reduction rules: Set the state for each ASR rule\u0027 is \u0027configured\u0027",
                           "Technique1":  "T1559",
@@ -4039,9 +4159,9 @@
                           "Mitigation1":  "M1040",
                           "Mitigation2":  "M1038"
                       },
-    "18.9.45.4.3.1":  {
-                          "Section":  "18.9.45.4.3",
-                          "Recommendation":  "18.9.45.4.3.1",
+    "18.9.47.5.3.1":  {
+                          "Section":  "18.9.47.5.3",
+                          "Recommendation":  "18.9.47.5.3.1",
                           "Profile":  "L1",
                           "RecommendationTitle":  "Ensure \u0027Prevent users and apps from accessing dangerous websites\u0027 is set to \u0027Enabled: Block\u0027",
                           "Technique1":  "T1189",
@@ -4049,9 +4169,9 @@
                           "Mitigation1":  "M1050",
                           "Mitigation2":  "M1049"
                       },
-    "18.9.45.5.1":  {
-                        "Section":  "18.9.45.5",
-                        "Recommendation":  "18.9.45.5.1",
+    "18.9.47.6.1":  {
+                        "Section":  "18.9.47.6",
+                        "Recommendation":  "18.9.47.6.1",
                         "Profile":  "L2",
                         "RecommendationTitle":  "Ensure \u0027Enable file hash computation feature\u0027 is set to \u0027Enabled\u0027",
                         "Technique1":  "T1553",
@@ -4059,9 +4179,9 @@
                         "Mitigation1":  "M1054",
                         "Mitigation2":  null
                     },
-    "18.9.45.8.1":  {
-                        "Section":  "18.9.45.8",
-                        "Recommendation":  "18.9.45.8.1",
+    "18.9.47.9.1":  {
+                        "Section":  "18.9.47.9",
+                        "Recommendation":  "18.9.47.9.1",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Scan all downloaded files and attachments\u0027 is set to \u0027Enabled\u0027",
                         "Technique1":  "T1059",
@@ -4069,9 +4189,9 @@
                         "Mitigation1":  "M1049",
                         "Mitigation2":  null
                     },
-    "18.9.45.8.2":  {
-                        "Section":  "18.9.45.8",
-                        "Recommendation":  "18.9.45.8.2",
+    "18.9.47.9.2":  {
+                        "Section":  "18.9.47.9",
+                        "Recommendation":  "18.9.47.9.2",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Turn off real-time protection\u0027 is set to \u0027Disabled\u0027",
                         "Technique1":  "T1553",
@@ -4079,9 +4199,9 @@
                         "Mitigation1":  "M1028",
                         "Mitigation2":  null
                     },
-    "18.9.45.8.3":  {
-                        "Section":  "18.9.45.8",
-                        "Recommendation":  "18.9.45.8.3",
+    "18.9.47.9.3":  {
+                        "Section":  "18.9.47.9",
+                        "Recommendation":  "18.9.47.9.3",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Turn on behavior monitoring\u0027 is set to \u0027Enabled\u0027",
                         "Technique1":  "T1553",
@@ -4089,19 +4209,19 @@
                         "Mitigation1":  "M1028",
                         "Mitigation2":  null
                     },
-    "18.9.45.10.1":  {
-                         "Section":  "18.9.45.10",
-                         "Recommendation":  "18.9.45.10.1",
-                         "Profile":  "L2",
-                         "RecommendationTitle":  "Ensure \u0027Configure Watson events\u0027 is set to \u0027Disabled\u0027",
-                         "Technique1":  "No MITRE ATT\u0026CK mapping",
-                         "Technique2":  null,
-                         "Mitigation1":  "No MITRE ATT\u0026CK mapping",
-                         "Mitigation2":  null
-                     },
-    "18.9.45.11.1":  {
-                         "Section":  "18.9.45.11",
-                         "Recommendation":  "18.9.45.11.1",
+    "18.9.47.9.4":  {
+                        "Section":  "18.9.47.9",
+                        "Recommendation":  "18.9.47.9.4",
+                        "Profile":  "L1",
+                        "RecommendationTitle":  "Ensure ?Turn on script scanning? is set to ?Enabled?",
+                        "Technique1":  "No MITRE ATT\u0026CK mapping",
+                        "Technique2":  null,
+                        "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                        "Mitigation2":  null
+                    },
+    "18.9.47.11.1":  {
+                         "Section":  "18.9.47.12",
+                         "Recommendation":  "18.9.47.11.1",
                          "Profile":  "L1",
                          "RecommendationTitle":  "Ensure \u0027Scan removable drives\u0027 is set to \u0027Enabled\u0027",
                          "Technique1":  "T1091",
@@ -4109,9 +4229,9 @@
                          "Mitigation1":  "M1034",
                          "Mitigation2":  null
                      },
-    "18.9.45.11.2":  {
-                         "Section":  "18.9.45.11",
-                         "Recommendation":  "18.9.45.11.2",
+    "18.9.47.11.2":  {
+                         "Section":  "18.9.47.12",
+                         "Recommendation":  "18.9.47.11.2",
                          "Profile":  "L1",
                          "RecommendationTitle":  "Ensure \u0027Turn on e-mail scanning\u0027 is set to \u0027Enabled\u0027",
                          "Technique1":  "T1556",
@@ -4119,68 +4239,8 @@
                          "Mitigation1":  "M1049",
                          "Mitigation2":  null
                      },
-    "18.9.46.1":  {
-                      "Section":  "18.9.46",
-                      "Recommendation":  "18.9.46.1",
-                      "Profile":  "NG",
-                      "RecommendationTitle":  "Ensure \u0027Allow auditing events in Microsoft Defender Application Guard\u0027 is set to \u0027Enabled\u0027",
-                      "Technique1":  "T1562",
-                      "Technique2":  null,
-                      "Mitigation1":  "M1022",
-                      "Mitigation2":  null
-                  },
-    "18.9.46.2":  {
-                      "Section":  "18.9.46",
-                      "Recommendation":  "18.9.46.2",
-                      "Profile":  "NG",
-                      "RecommendationTitle":  "Ensure \u0027Allow camera and microphone access in Microsoft Defender Application Guard\u0027 is set to \u0027Disabled\u0027",
-                      "Technique1":  "T1123",
-                      "Technique2":  "T1125",
-                      "Mitigation1":  "No MITRE ATT\u0026CK Mitigation",
-                      "Mitigation2":  null
-                  },
-    "18.9.46.3":  {
-                      "Section":  "18.9.46",
-                      "Recommendation":  "18.9.46.3",
-                      "Profile":  "NG",
-                      "RecommendationTitle":  "Ensure \u0027Allow data persistence for Microsoft Defender Application Guard\u0027 is set to \u0027Disabled\u0027",
-                      "Technique1":  "No MITRE ATT\u0026CK mapping",
-                      "Technique2":  null,
-                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
-                      "Mitigation2":  null
-                  },
-    "18.9.46.4":  {
-                      "Section":  "18.9.46",
-                      "Recommendation":  "18.9.46.4",
-                      "Profile":  "NG",
-                      "RecommendationTitle":  "Ensure \u0027Allow files to download and save to the host operating system from Microsoft Defender Application Guard\u0027 is set to \u0027Disabled\u0027",
-                      "Technique1":  "T1211",
-                      "Technique2":  null,
-                      "Mitigation1":  "M1048",
-                      "Mitigation2":  null
-                  },
-    "18.9.46.5":  {
-                      "Section":  "18.9.46",
-                      "Recommendation":  "18.9.46.5",
-                      "Profile":  "NG",
-                      "RecommendationTitle":  "Ensure \u0027Configure Microsoft Defender Application Guard clipboard settings: Clipboard behavior setting\u0027 is set to \u0027Enabled: Enable clipboard operation from an isolated session to the host\u0027",
-                      "Technique1":  "No MITRE ATT\u0026CK mapping",
-                      "Technique2":  null,
-                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
-                      "Mitigation2":  null
-                  },
-    "18.9.46.6":  {
-                      "Section":  "18.9.46",
-                      "Recommendation":  "18.9.46.6",
-                      "Profile":  "NG",
-                      "RecommendationTitle":  "Ensure \u0027Turn on Microsoft Defender Application Guard in Managed Mode\u0027 is set to \u0027Enabled: 1\u0027",
-                      "Technique1":  "No MITRE ATT\u0026CK mapping",
-                      "Technique2":  null,
-                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
-                      "Mitigation2":  null
-                  },
     "18.9.48.1":  {
-                      "Section":  "18.9.48",
+                      "Section":  "18.9.50",
                       "Recommendation":  "18.9.48.1",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Allow Address bar drop-down list suggestions\u0027 is set to \u0027Disabled\u0027",
@@ -4190,7 +4250,7 @@
                       "Mitigation2":  null
                   },
     "18.9.48.2":  {
-                      "Section":  "18.9.48",
+                      "Section":  "18.9.50",
                       "Recommendation":  "18.9.48.2",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Allow Adobe Flash\u0027 is set to \u0027Disabled\u0027",
@@ -4200,7 +4260,7 @@
                       "Mitigation2":  null
                   },
     "18.9.48.3":  {
-                      "Section":  "18.9.48",
+                      "Section":  "18.9.50",
                       "Recommendation":  "18.9.48.3",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Allow InPrivate Browsing\u0027 is set to \u0027Disabled\u0027",
@@ -4209,8 +4269,38 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.48.7":  {
+    "18.9.48.4":  {
                       "Section":  "18.9.48",
+                      "Recommendation":  "18.9.48.4",
+                      "Profile":  "NG",
+                      "RecommendationTitle":  "Ensure \u0027Allow files to download and save to the host operating system from Microsoft Defender Application Guard\u0027 is set to \u0027Disabled\u0027",
+                      "Technique1":  "T1211",
+                      "Technique2":  null,
+                      "Mitigation1":  "M1048",
+                      "Mitigation2":  null
+                  },
+    "18.9.48.5":  {
+                      "Section":  "18.9.48",
+                      "Recommendation":  "18.9.48.5",
+                      "Profile":  "NG",
+                      "RecommendationTitle":  "Ensure \u0027Configure Microsoft Defender Application Guard clipboard settings: Clipboard behavior setting\u0027 is set to \u0027Enabled: Enable clipboard operation from an isolated session to the host\u0027",
+                      "Technique1":  "No MITRE ATT\u0026CK mapping",
+                      "Technique2":  null,
+                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                      "Mitigation2":  null
+                  },
+    "18.9.48.6":  {
+                      "Section":  "18.9.48",
+                      "Recommendation":  "18.9.48.6",
+                      "Profile":  "NG",
+                      "RecommendationTitle":  "Ensure \u0027Turn on Microsoft Defender Application Guard in Managed Mode\u0027 is set to \u0027Enabled: 1\u0027",
+                      "Technique1":  "No MITRE ATT\u0026CK mapping",
+                      "Technique2":  null,
+                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                      "Mitigation2":  null
+                  },
+    "18.9.48.7":  {
+                      "Section":  "18.9.50",
                       "Recommendation":  "18.9.48.7",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Configure Pop-up Blocker\u0027 is set to \u0027Enabled\u0027",
@@ -4220,7 +4310,7 @@
                       "Mitigation2":  null
                   },
     "18.9.48.8":  {
-                      "Section":  "18.9.48",
+                      "Section":  "18.9.50",
                       "Recommendation":  "18.9.48.8",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Configure search suggestions in Address bar\u0027 is set to \u0027Disabled\u0027",
@@ -4230,7 +4320,7 @@
                       "Mitigation2":  null
                   },
     "18.9.48.10":  {
-                       "Section":  "18.9.48",
+                       "Section":  "18.9.50",
                        "Recommendation":  "18.9.48.10",
                        "Profile":  "L2",
                        "RecommendationTitle":  "Ensure \u0027Prevent access to the about:flags page in Microsoft Edge\u0027 is set to \u0027Enabled\u0027",
@@ -4240,7 +4330,7 @@
                        "Mitigation2":  null
                    },
     "18.9.48.13":  {
-                       "Section":  "18.9.48",
+                       "Section":  "18.9.50",
                        "Recommendation":  "18.9.48.13",
                        "Profile":  "L2",
                        "RecommendationTitle":  "Ensure \u0027Prevent using Localhost IP address for WebRTC\u0027 is set to \u0027Enabled\u0027",
@@ -4249,9 +4339,9 @@
                        "Mitigation1":  "M1056",
                        "Mitigation2":  null
                    },
-    "18.9.56.1":  {
-                      "Section":  "18.9.56",
-                      "Recommendation":  "18.9.56.1",
+    "18.9.58.1":  {
+                      "Section":  "18.9.58",
+                      "Recommendation":  "18.9.58.1",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Prevent the usage of OneDrive for file storage\u0027 is set to \u0027Enabled\u0027",
                       "Technique1":  "T1567",
@@ -4259,9 +4349,9 @@
                       "Mitigation1":  "M1021",
                       "Mitigation2":  null
                   },
-    "18.9.62.1":  {
-                      "Section":  "18.9.62",
-                      "Recommendation":  "18.9.62.1",
+    "18.9.64.1":  {
+                      "Section":  "18.9.64",
+                      "Recommendation":  "18.9.64.1",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Turn off Push To Install service\u0027 is set to \u0027Enabled\u0027",
                       "Technique1":  "T1570",
@@ -4269,9 +4359,9 @@
                       "Mitigation1":  "M1031",
                       "Mitigation2":  null
                   },
-    "18.9.63.2.2":  {
-                        "Section":  "18.9.63.2",
-                        "Recommendation":  "18.9.63.2.2",
+    "18.9.65.2.2":  {
+                        "Section":  "18.9.65.2",
+                        "Recommendation":  "18.9.65.2.2",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Do not allow passwords to be saved\u0027 is set to \u0027Enabled\u0027",
                         "Technique1":  "T1555",
@@ -4279,9 +4369,9 @@
                         "Mitigation1":  "M1027",
                         "Mitigation2":  null
                     },
-    "18.9.63.3.2.1":  {
-                          "Section":  "18.9.63.3.2",
-                          "Recommendation":  "18.9.63.3.2.1",
+    "18.9.65.3.2.1":  {
+                          "Section":  "18.9.65.3.2",
+                          "Recommendation":  "18.9.65.3.2.1",
                           "Profile":  "L2",
                           "RecommendationTitle":  "Ensure \u0027Allow users to connect remotely by using Remote Desktop Services\u0027 is set to \u0027Disabled\u0027",
                           "Technique1":  "T1210",
@@ -4289,9 +4379,19 @@
                           "Mitigation1":  "M1042",
                           "Mitigation2":  null
                       },
-    "18.9.63.3.3.1":  {
-                          "Section":  "18.9.63.3.3",
-                          "Recommendation":  "18.9.63.3.3.1",
+    "18.9.65.3.3.1":  {
+                          "Section":  "18.9.65.3.3",
+                          "Recommendation":  "18.9.65.3.3.1",
+                          "Profile":  "L2",
+                          "RecommendationTitle":  "Ensure \u0027Allow UI Automation redirection\u0027 is set to \u0027Disabled\u0027",
+                          "Technique1":  null,
+                          "Technique2":  null,
+                          "Mitigation1":  null,
+                          "Mitigation2":  null
+                      },
+    "18.9.65.3.3.2":  {
+                          "Section":  "18.9.65.3.3",
+                          "Recommendation":  "18.9.65.3.3.2",
                           "Profile":  "L2",
                           "RecommendationTitle":  "Ensure \u0027Do not allow COM port redirection\u0027 is set to \u0027Enabled\u0027",
                           "Technique1":  "T1210",
@@ -4299,9 +4399,9 @@
                           "Mitigation1":  "M1042",
                           "Mitigation2":  null
                       },
-    "18.9.63.3.3.2":  {
-                          "Section":  "18.9.63.3.3",
-                          "Recommendation":  "18.9.63.3.3.2",
+    "18.9.65.3.3.3":  {
+                          "Section":  "18.9.65.3.3",
+                          "Recommendation":  "18.9.65.3.3.3",
                           "Profile":  "L1",
                           "RecommendationTitle":  "Ensure \u0027Do not allow drive redirection\u0027 is set to \u0027Enabled\u0027",
                           "Technique1":  "T1210",
@@ -4309,9 +4409,19 @@
                           "Mitigation1":  "M1042",
                           "Mitigation2":  null
                       },
-    "18.9.63.3.3.3":  {
-                          "Section":  "18.9.63.3.3",
-                          "Recommendation":  "18.9.63.3.3.3",
+    "18.9.65.3.3.4":  {
+                          "Section":  "18.9.65.3.3",
+                          "Recommendation":  "18.9.65.3.3.4",
+                          "Profile":  "L2",
+                          "RecommendationTitle":  "Ensure \u0027Do not allow location redirection\u0027 is set to \u0027Enabled\u0027",
+                          "Technique1":  null,
+                          "Technique2":  null,
+                          "Mitigation1":  null,
+                          "Mitigation2":  null
+                      },
+    "18.9.65.3.3.5":  {
+                          "Section":  "18.9.65.3.3",
+                          "Recommendation":  "18.9.65.3.3.5",
                           "Profile":  "L2",
                           "RecommendationTitle":  "Ensure \u0027Do not allow LPT port redirection\u0027 is set to \u0027Enabled\u0027",
                           "Technique1":  "T1210",
@@ -4319,9 +4429,9 @@
                           "Mitigation1":  "M1042",
                           "Mitigation2":  null
                       },
-    "18.9.63.3.3.4":  {
-                          "Section":  "18.9.63.3.3",
-                          "Recommendation":  "18.9.63.3.3.4",
+    "18.9.65.3.3.6":  {
+                          "Section":  "18.9.65.3.3",
+                          "Recommendation":  "18.9.65.3.3.6",
                           "Profile":  "L2",
                           "RecommendationTitle":  "Ensure \u0027Do not allow supported Plug and Play device redirection\u0027 is set to \u0027Enabled\u0027",
                           "Technique1":  "T1210",
@@ -4329,9 +4439,9 @@
                           "Mitigation1":  "M1042",
                           "Mitigation2":  null
                       },
-    "18.9.63.3.9.1":  {
-                          "Section":  "18.9.63.3.9",
-                          "Recommendation":  "18.9.63.3.9.1",
+    "18.9.65.3.9.1":  {
+                          "Section":  "18.9.65.3.9",
+                          "Recommendation":  "18.9.65.3.9.1",
                           "Profile":  "L1",
                           "RecommendationTitle":  "Ensure \u0027Always prompt for password upon connection\u0027 is set to \u0027Enabled\u0027",
                           "Technique1":  "T1210",
@@ -4339,9 +4449,9 @@
                           "Mitigation1":  "M1042",
                           "Mitigation2":  null
                       },
-    "18.9.63.3.9.2":  {
-                          "Section":  "18.9.63.3.9",
-                          "Recommendation":  "18.9.63.3.9.2",
+    "18.9.65.3.9.2":  {
+                          "Section":  "18.9.65.3.9",
+                          "Recommendation":  "18.9.65.3.9.2",
                           "Profile":  "L1",
                           "RecommendationTitle":  "Ensure \u0027Require secure RPC communication\u0027 is set to \u0027Enabled\u0027",
                           "Technique1":  "T1210",
@@ -4349,9 +4459,9 @@
                           "Mitigation1":  "M1042",
                           "Mitigation2":  "M1041"
                       },
-    "18.9.63.3.9.3":  {
-                          "Section":  "18.9.63.3.9",
-                          "Recommendation":  "18.9.63.3.9.3",
+    "18.9.65.3.9.3":  {
+                          "Section":  "18.9.65.3.9",
+                          "Recommendation":  "18.9.65.3.9.3",
                           "Profile":  "L1",
                           "RecommendationTitle":  "Ensure \u0027Require use of specific security layer for remote (RDP) connections\u0027 is set to \u0027Enabled: SSL\u0027",
                           "Technique1":  "T1210",
@@ -4359,9 +4469,9 @@
                           "Mitigation1":  "M1042",
                           "Mitigation2":  null
                       },
-    "18.9.63.3.9.4":  {
-                          "Section":  "18.9.63.3.9",
-                          "Recommendation":  "18.9.63.3.9.4",
+    "18.9.65.3.9.4":  {
+                          "Section":  "18.9.65.3.9",
+                          "Recommendation":  "18.9.65.3.9.4",
                           "Profile":  "L1",
                           "RecommendationTitle":  "Ensure \u0027Require user authentication for remote connections by using Network Level Authentication\u0027 is set to \u0027Enabled\u0027",
                           "Technique1":  "T1210",
@@ -4369,9 +4479,9 @@
                           "Mitigation1":  "M1042",
                           "Mitigation2":  null
                       },
-    "18.9.63.3.9.5":  {
-                          "Section":  "18.9.63.3.9",
-                          "Recommendation":  "18.9.63.3.9.5",
+    "18.9.65.3.9.5":  {
+                          "Section":  "18.9.65.3.9",
+                          "Recommendation":  "18.9.65.3.9.5",
                           "Profile":  "L1",
                           "RecommendationTitle":  "Ensure \u0027Set client connection encryption level\u0027 is set to \u0027Enabled: High Level\u0027",
                           "Technique1":  "T1210",
@@ -4379,9 +4489,9 @@
                           "Mitigation1":  "M1042",
                           "Mitigation2":  "M1041"
                       },
-    "18.9.63.3.10.1":  {
-                           "Section":  "18.9.63.3.10",
-                           "Recommendation":  "18.9.63.3.10.1",
+    "18.9.65.3.10.1":  {
+                           "Section":  "18.9.65.3.10",
+                           "Recommendation":  "18.9.65.3.10.1",
                            "Profile":  "L2",
                            "RecommendationTitle":  "Ensure \u0027Set time limit for active but idle Remote Desktop Services sessions\u0027 is set to \u0027Enabled: 15 minutes or less, but not Never (0)\u0027",
                            "Technique1":  "T1210",
@@ -4389,9 +4499,9 @@
                            "Mitigation1":  "M1042",
                            "Mitigation2":  null
                        },
-    "18.9.63.3.10.2":  {
-                           "Section":  "18.9.63.3.10",
-                           "Recommendation":  "18.9.63.3.10.2",
+    "18.9.65.3.10.2":  {
+                           "Section":  "18.9.65.3.10",
+                           "Recommendation":  "18.9.65.3.10.2",
                            "Profile":  "L2",
                            "RecommendationTitle":  "Ensure \u0027Set time limit for disconnected sessions\u0027 is set to \u0027Enabled: 1 minute\u0027",
                            "Technique1":  "T1210",
@@ -4399,9 +4509,9 @@
                            "Mitigation1":  "M1042",
                            "Mitigation2":  null
                        },
-    "18.9.63.3.11.1":  {
-                           "Section":  "18.9.63.3.11",
-                           "Recommendation":  "18.9.63.3.11.1",
+    "18.9.65.3.11.1":  {
+                           "Section":  "18.9.65.3.11",
+                           "Recommendation":  "18.9.65.3.11.1",
                            "Profile":  "L1",
                            "RecommendationTitle":  "Ensure \u0027Do not delete temp folders upon exit\u0027 is set to \u0027Disabled\u0027",
                            "Technique1":  "T1210",
@@ -4409,9 +4519,9 @@
                            "Mitigation1":  "M1042",
                            "Mitigation2":  null
                        },
-    "18.9.64.1":  {
-                      "Section":  "18.9.64",
-                      "Recommendation":  "18.9.64.1",
+    "18.9.66.1":  {
+                      "Section":  "18.9.66",
+                      "Recommendation":  "18.9.66.1",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Prevent downloading of enclosures\u0027 is set to \u0027Enabled\u0027",
                       "Technique1":  "T1204",
@@ -4419,9 +4529,9 @@
                       "Mitigation1":  "M1038",
                       "Mitigation2":  null
                   },
-    "18.9.65.2":  {
-                      "Section":  "18.9.65",
-                      "Recommendation":  "18.9.65.2",
+    "18.9.67.2":  {
+                      "Section":  "18.9.67",
+                      "Recommendation":  "18.9.67.2",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Allow Cloud Search\u0027 is set to \u0027Enabled: Disable Cloud Search\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4429,9 +4539,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.65.3":  {
-                      "Section":  "18.9.65",
-                      "Recommendation":  "18.9.65.3",
+    "18.9.67.3":  {
+                      "Section":  "18.9.67",
+                      "Recommendation":  "18.9.67.3",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Allow Cortana\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4439,9 +4549,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.65.4":  {
-                      "Section":  "18.9.65",
-                      "Recommendation":  "18.9.65.4",
+    "18.9.67.4":  {
+                      "Section":  "18.9.67",
+                      "Recommendation":  "18.9.67.4",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Allow Cortana above lock screen\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4449,9 +4559,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.65.5":  {
-                      "Section":  "18.9.65",
-                      "Recommendation":  "18.9.65.5",
+    "18.9.67.5":  {
+                      "Section":  "18.9.67",
+                      "Recommendation":  "18.9.67.5",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Allow indexing of encrypted files\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "T1005",
@@ -4459,9 +4569,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK Mitigation",
                       "Mitigation2":  null
                   },
-    "18.9.65.6":  {
-                      "Section":  "18.9.65",
-                      "Recommendation":  "18.9.65.6",
+    "18.9.67.6":  {
+                      "Section":  "18.9.67",
+                      "Recommendation":  "18.9.67.6",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Allow search and Cortana to use location\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "T1591",
@@ -4469,9 +4579,9 @@
                       "Mitigation1":  "M1056",
                       "Mitigation2":  null
                   },
-    "18.9.70.1":  {
-                      "Section":  "18.9.70",
-                      "Recommendation":  "18.9.70.1",
+    "18.9.72.1":  {
+                      "Section":  "18.9.72",
+                      "Recommendation":  "18.9.72.1",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Turn off KMS Client Online AVS Validation\u0027 is set to \u0027Enabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4479,9 +4589,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.73.1":  {
-                      "Section":  "18.9.73",
-                      "Recommendation":  "18.9.73.1",
+    "18.9.75.1":  {
+                      "Section":  "18.9.75",
+                      "Recommendation":  "18.9.75.1",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Disable all apps from Microsoft Store\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4489,9 +4599,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.73.2":  {
-                      "Section":  "18.9.73",
-                      "Recommendation":  "18.9.73.2",
+    "18.9.75.2":  {
+                      "Section":  "18.9.75",
+                      "Recommendation":  "18.9.75.2",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Only display the private store within the Microsoft Store\u0027 is set to \u0027Enabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4499,9 +4609,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.73.3":  {
-                      "Section":  "18.9.73",
-                      "Recommendation":  "18.9.73.3",
+    "18.9.75.3":  {
+                      "Section":  "18.9.75",
+                      "Recommendation":  "18.9.75.3",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Turn off Automatic Download and Install of updates\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4509,9 +4619,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.73.4":  {
-                      "Section":  "18.9.73",
-                      "Recommendation":  "18.9.73.4",
+    "18.9.75.4":  {
+                      "Section":  "18.9.75",
+                      "Recommendation":  "18.9.75.4",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Turn off the offer to update to the latest version of Windows\u0027 is set to \u0027Enabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4519,9 +4629,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.73.5":  {
-                      "Section":  "18.9.73",
-                      "Recommendation":  "18.9.73.5",
+    "18.9.75.5":  {
+                      "Section":  "18.9.75",
+                      "Recommendation":  "18.9.75.5",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Turn off the Store application\u0027 is set to \u0027Enabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4529,9 +4639,19 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.81.1.1":  {
-                        "Section":  "18.9.81.1",
-                        "Recommendation":  "18.9.81.1.1",
+    "18.9.81.1":  {
+                      "Section":  "18.9.81",
+                      "Recommendation":  "18.9.81.1",
+                      "Profile":  "L1",
+                      "RecommendationTitle":  "Ensure ?Allow widgets? is set to ?Disabled?",
+                      "Technique1":  "No MITRE ATT\u0026CK mapping",
+                      "Technique2":  null,
+                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                      "Mitigation2":  null
+                  },
+    "18.9.85.1.1":  {
+                        "Section":  "18.9.85.1",
+                        "Recommendation":  "18.9.85.1.1",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Configure Windows Defender SmartScreen\u0027 is set to \u0027Enabled: Warn and prevent bypass\u0027",
                         "Technique1":  "T1204",
@@ -4539,9 +4659,9 @@
                         "Mitigation1":  "M1038",
                         "Mitigation2":  null
                     },
-    "18.9.81.2.1":  {
-                        "Section":  "18.9.81.2",
-                        "Recommendation":  "18.9.81.2.1",
+    "18.9.85.2.1":  {
+                        "Section":  "18.9.85.2",
+                        "Recommendation":  "18.9.85.2.1",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Configure Windows Defender SmartScreen\u0027 is set to \u0027Enabled\u0027",
                         "Technique1":  "T1204",
@@ -4549,9 +4669,9 @@
                         "Mitigation1":  "M1038",
                         "Mitigation2":  null
                     },
-    "18.9.81.2.2":  {
-                        "Section":  "18.9.81.2",
-                        "Recommendation":  "18.9.81.2.2",
+    "18.9.85.2.2":  {
+                        "Section":  "18.9.85.2",
+                        "Recommendation":  "18.9.85.2.2",
                         "Profile":  "L1",
                         "RecommendationTitle":  "Ensure \u0027Prevent bypassing Windows Defender SmartScreen prompts for sites\u0027 is set to \u0027Enabled\u0027",
                         "Technique1":  "T1553",
@@ -4559,9 +4679,9 @@
                         "Mitigation1":  "M1054",
                         "Mitigation2":  null
                     },
-    "18.9.83.1":  {
-                      "Section":  "18.9.83",
-                      "Recommendation":  "18.9.83.1",
+    "18.9.87.1":  {
+                      "Section":  "18.9.87",
+                      "Recommendation":  "18.9.87.1",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Enables or disables Windows Game Recording and Broadcasting\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "T1592",
@@ -4569,9 +4689,9 @@
                       "Mitigation1":  "M1056",
                       "Mitigation2":  null
                   },
-    "18.9.85.1":  {
-                      "Section":  "18.9.85",
-                      "Recommendation":  "18.9.85.1",
+    "18.9.89.1":  {
+                      "Section":  "18.9.89",
+                      "Recommendation":  "18.9.89.1",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Allow suggested apps in Windows Ink Workspace\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4579,9 +4699,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.85.2":  {
-                      "Section":  "18.9.85",
-                      "Recommendation":  "18.9.85.2",
+    "18.9.89.2":  {
+                      "Section":  "18.9.89",
+                      "Recommendation":  "18.9.89.2",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Allow Windows Ink Workspace\u0027 is set to \u0027Enabled: On, but disallow access above lock\u0027 OR \u0027Disabled\u0027 but not \u0027Enabled: On\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4589,9 +4709,9 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.86.1":  {
-                      "Section":  "18.9.86",
-                      "Recommendation":  "18.9.86.1",
+    "18.9.90.1":  {
+                      "Section":  "18.9.90",
+                      "Recommendation":  "18.9.90.1",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Allow user control over installs\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "T1204",
@@ -4599,9 +4719,9 @@
                       "Mitigation1":  "M1038",
                       "Mitigation2":  null
                   },
-    "18.9.86.2":  {
-                      "Section":  "18.9.86",
-                      "Recommendation":  "18.9.86.2",
+    "18.9.90.2":  {
+                      "Section":  "18.9.90",
+                      "Recommendation":  "18.9.90.2",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Always install with elevated privileges\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "T1548",
@@ -4609,9 +4729,9 @@
                       "Mitigation1":  "M1052",
                       "Mitigation2":  null
                   },
-    "18.9.86.3":  {
-                      "Section":  "18.9.86",
-                      "Recommendation":  "18.9.86.3",
+    "18.9.90.3":  {
+                      "Section":  "18.9.90",
+                      "Recommendation":  "18.9.90.3",
                       "Profile":  "L2",
                       "RecommendationTitle":  "Ensure \u0027Prevent Internet Explorer security prompt for Windows Installer scripts\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "T1204",
@@ -4619,9 +4739,9 @@
                       "Mitigation1":  "M1038",
                       "Mitigation2":  null
                   },
-    "18.9.87.1":  {
-                      "Section":  "18.9.87",
-                      "Recommendation":  "18.9.87.1",
+    "18.9.91.1":  {
+                      "Section":  "18.9.91",
+                      "Recommendation":  "18.9.91.1",
                       "Profile":  "L1",
                       "RecommendationTitle":  "Ensure \u0027Sign-in and lock last interactive user automatically after a restart\u0027 is set to \u0027Disabled\u0027",
                       "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4629,109 +4749,129 @@
                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                       "Mitigation2":  null
                   },
-    "18.9.96.1":  {
-                      "Section":  "18.9.96",
-                      "Recommendation":  "18.9.96.1",
-                      "Profile":  "L1",
-                      "RecommendationTitle":  "Ensure \u0027Turn on PowerShell Script Block Logging\u0027 is set to \u0027Disabled\u0027",
-                      "Technique1":  "T1552",
-                      "Technique2":  null,
-                      "Mitigation1":  "M1028",
-                      "Mitigation2":  null
-                  },
-    "18.9.96.2":  {
-                      "Section":  "18.9.96",
-                      "Recommendation":  "18.9.96.2",
-                      "Profile":  "L1",
-                      "RecommendationTitle":  "Ensure \u0027Turn on PowerShell Transcription\u0027 is set to \u0027Disabled\u0027",
-                      "Technique1":  "T1552",
-                      "Technique2":  null,
-                      "Mitigation1":  "M1028",
-                      "Mitigation2":  null
-                  },
-    "18.9.98.1.1":  {
-                        "Section":  "18.9.98.1",
-                        "Recommendation":  "18.9.98.1.1",
-                        "Profile":  "L1",
-                        "RecommendationTitle":  "Ensure \u0027Allow Basic authentication\u0027 is set to \u0027Disabled\u0027",
-                        "Technique1":  "T1021",
-                        "Technique2":  "T1557",
-                        "Mitigation1":  "M1018",
-                        "Mitigation2":  "M1041"
-                    },
-    "18.9.98.1.2":  {
-                        "Section":  "18.9.98.1",
-                        "Recommendation":  "18.9.98.1.2",
-                        "Profile":  "L1",
-                        "RecommendationTitle":  "Ensure \u0027Allow unencrypted traffic\u0027 is set to \u0027Disabled\u0027",
-                        "Technique1":  "T1021",
-                        "Technique2":  "T1557",
-                        "Mitigation1":  "M1018",
-                        "Mitigation2":  "M1041"
-                    },
-    "18.9.98.1.3":  {
-                        "Section":  "18.9.98.1",
-                        "Recommendation":  "18.9.98.1.3",
-                        "Profile":  "L1",
-                        "RecommendationTitle":  "Ensure \u0027Disallow Digest authentication\u0027 is set to \u0027Enabled\u0027",
-                        "Technique1":  "T1021",
-                        "Technique2":  "T1557",
-                        "Mitigation1":  "M1018",
-                        "Mitigation2":  "M1041"
-                    },
-    "18.9.98.2.1":  {
-                        "Section":  "18.9.98.2",
-                        "Recommendation":  "18.9.98.2.1",
-                        "Profile":  "L1",
-                        "RecommendationTitle":  "Ensure \u0027Allow Basic authentication\u0027 is set to \u0027Disabled\u0027",
-                        "Technique1":  "T1021",
-                        "Technique2":  "T1557",
-                        "Mitigation1":  "M1018",
-                        "Mitigation2":  "M1041"
-                    },
-    "18.9.98.2.2":  {
-                        "Section":  "18.9.98.2",
-                        "Recommendation":  "18.9.98.2.2",
-                        "Profile":  "L2",
-                        "RecommendationTitle":  "Ensure \u0027Allow remote server management through WinRM\u0027 is set to \u0027Disabled\u0027",
-                        "Technique1":  "T1021",
-                        "Technique2":  null,
-                        "Mitigation1":  "M1018",
-                        "Mitigation2":  null
-                    },
-    "18.9.98.2.3":  {
-                        "Section":  "18.9.98.2",
-                        "Recommendation":  "18.9.98.2.3",
-                        "Profile":  "L1",
-                        "RecommendationTitle":  "Ensure \u0027Allow unencrypted traffic\u0027 is set to \u0027Disabled\u0027",
-                        "Technique1":  "T1021",
-                        "Technique2":  "T1557",
-                        "Mitigation1":  "M1018",
-                        "Mitigation2":  "M1041"
-                    },
-    "18.9.98.2.4":  {
-                        "Section":  "18.9.98.2",
-                        "Recommendation":  "18.9.98.2.4",
-                        "Profile":  "L1",
-                        "RecommendationTitle":  "Ensure \u0027Disallow WinRM from storing RunAs credentials\u0027 is set to \u0027Enabled\u0027",
-                        "Technique1":  "T1021",
-                        "Technique2":  "T1555",
-                        "Mitigation1":  "M1018",
-                        "Mitigation2":  "M1027"
-                    },
-    "18.9.99.1":  {
-                      "Section":  "18.9.99",
-                      "Recommendation":  "18.9.99.1",
-                      "Profile":  "L2",
-                      "RecommendationTitle":  "Ensure \u0027Allow Remote Shell Access\u0027 is set to \u0027Disabled\u0027",
-                      "Technique1":  "T1059",
-                      "Technique2":  null,
-                      "Mitigation1":  "M1042",
-                      "Mitigation2":  null
-                  },
-    "18.9.100.2.1":  {
-                         "Section":  "18.9.100.2",
-                         "Recommendation":  "18.9.100.2.1",
+    "18.9.100.1":  {
+                       "Section":  "18.9.100",
+                       "Recommendation":  "18.9.100.1",
+                       "Profile":  "L1",
+                       "RecommendationTitle":  "Ensure \u0027Turn on PowerShell Script Block Logging\u0027 is set to \u0027Enabled\u0027",
+                       "Technique1":  "T1552",
+                       "Technique2":  null,
+                       "Mitigation1":  "M1028",
+                       "Mitigation2":  null
+                   },
+    "18.9.100.2":  {
+                       "Section":  "18.9.100",
+                       "Recommendation":  "18.9.100.2",
+                       "Profile":  "L1",
+                       "RecommendationTitle":  "Ensure \u0027Turn on PowerShell Transcription\u0027 is set to \u0027Disabled\u0027",
+                       "Technique1":  "T1552",
+                       "Technique2":  null,
+                       "Mitigation1":  "M1028",
+                       "Mitigation2":  null
+                   },
+    "18.9.102.1.1":  {
+                         "Section":  "18.9.102.1",
+                         "Recommendation":  "18.9.102.1.1",
+                         "Profile":  "L1",
+                         "RecommendationTitle":  "Ensure \u0027Allow Basic authentication\u0027 is set to \u0027Disabled\u0027",
+                         "Technique1":  "T1021",
+                         "Technique2":  "T1557",
+                         "Mitigation1":  "M1018",
+                         "Mitigation2":  "M1041"
+                     },
+    "18.9.102.1.2":  {
+                         "Section":  "18.9.102.1",
+                         "Recommendation":  "18.9.102.1.2",
+                         "Profile":  "L1",
+                         "RecommendationTitle":  "Ensure \u0027Allow unencrypted traffic\u0027 is set to \u0027Disabled\u0027",
+                         "Technique1":  "T1021",
+                         "Technique2":  "T1557",
+                         "Mitigation1":  "M1018",
+                         "Mitigation2":  "M1041"
+                     },
+    "18.9.102.1.3":  {
+                         "Section":  "18.9.102.1",
+                         "Recommendation":  "18.9.102.1.3",
+                         "Profile":  "L1",
+                         "RecommendationTitle":  "Ensure \u0027Disallow Digest authentication\u0027 is set to \u0027Enabled\u0027",
+                         "Technique1":  "T1021",
+                         "Technique2":  "T1557",
+                         "Mitigation1":  "M1018",
+                         "Mitigation2":  "M1041"
+                     },
+    "18.9.102.2.1":  {
+                         "Section":  "18.9.102.2",
+                         "Recommendation":  "18.9.102.2.1",
+                         "Profile":  "L1",
+                         "RecommendationTitle":  "Ensure \u0027Allow Basic authentication\u0027 is set to \u0027Disabled\u0027",
+                         "Technique1":  "T1021",
+                         "Technique2":  "T1557",
+                         "Mitigation1":  "M1018",
+                         "Mitigation2":  "M1041"
+                     },
+    "18.9.102.2.2":  {
+                         "Section":  "18.9.102.2",
+                         "Recommendation":  "18.9.102.2.2",
+                         "Profile":  "L2",
+                         "RecommendationTitle":  "Ensure \u0027Allow remote server management through WinRM\u0027 is set to \u0027Disabled\u0027",
+                         "Technique1":  "T1021",
+                         "Technique2":  null,
+                         "Mitigation1":  "M1018",
+                         "Mitigation2":  null
+                     },
+    "18.9.102.2.3":  {
+                         "Section":  "18.9.102.2",
+                         "Recommendation":  "18.9.102.2.3",
+                         "Profile":  "L1",
+                         "RecommendationTitle":  "Ensure \u0027Allow unencrypted traffic\u0027 is set to \u0027Disabled\u0027",
+                         "Technique1":  "T1021",
+                         "Technique2":  "T1557",
+                         "Mitigation1":  "M1018",
+                         "Mitigation2":  "M1041"
+                     },
+    "18.9.102.2.4":  {
+                         "Section":  "18.9.102.2",
+                         "Recommendation":  "18.9.102.2.4",
+                         "Profile":  "L1",
+                         "RecommendationTitle":  "Ensure \u0027Disallow WinRM from storing RunAs credentials\u0027 is set to \u0027Enabled\u0027",
+                         "Technique1":  "T1021",
+                         "Technique2":  "T1555",
+                         "Mitigation1":  "M1018",
+                         "Mitigation2":  "M1027"
+                     },
+    "18.9.103.1":  {
+                       "Section":  "18.9.103",
+                       "Recommendation":  "18.9.103.1",
+                       "Profile":  "L2",
+                       "RecommendationTitle":  "Ensure \u0027Allow Remote Shell Access\u0027 is set to \u0027Disabled\u0027",
+                       "Technique1":  "T1059",
+                       "Technique2":  null,
+                       "Mitigation1":  "M1042",
+                       "Mitigation2":  null
+                   },
+    "18.9.104.1":  {
+                       "Section":  "18.9.104",
+                       "Recommendation":  "18.9.104.1",
+                       "Profile":  "L1",
+                       "RecommendationTitle":  "Ensure ?Allow clipboard sharing with Windows Sandbox? is set to ?Disabled?",
+                       "Technique1":  "No MITRE ATT\u0026CK mapping",
+                       "Technique2":  null,
+                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                       "Mitigation2":  null
+                   },
+    "18.9.104.2":  {
+                       "Section":  "18.9.104",
+                       "Recommendation":  "18.9.104.2",
+                       "Profile":  "L1",
+                       "RecommendationTitle":  "Ensure ?Allow networking in Windows Sandbox? is set to ?Disabled?",
+                       "Technique1":  "No MITRE ATT\u0026CK mapping",
+                       "Technique2":  null,
+                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                       "Mitigation2":  null
+                   },
+    "18.9.105.2.1":  {
+                         "Section":  "18.9.105.2",
+                         "Recommendation":  "18.9.105.2.1",
                          "Profile":  "L1",
                          "RecommendationTitle":  "Ensure \u0027Prevent users from modifying settings\u0027 is set to \u0027Enabled\u0027",
                          "Technique1":  "T1562",
@@ -4739,69 +4879,69 @@
                          "Mitigation1":  "M1018",
                          "Mitigation2":  null
                      },
-    "18.9.103.2":  {
-                       "Section":  "18.9.103",
-                       "Recommendation":  "18.9.103.2",
-                       "Profile":  "L1",
-                       "RecommendationTitle":  "Ensure \u0027Configure Automatic Updates\u0027 is set to \u0027Enabled\u0027",
-                       "Technique1":  "No MITRE ATT\u0026CK mapping",
-                       "Technique2":  null,
-                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
-                       "Mitigation2":  null
-                   },
-    "18.9.103.3":  {
-                       "Section":  "18.9.103",
-                       "Recommendation":  "18.9.103.3",
-                       "Profile":  "L1",
-                       "RecommendationTitle":  "Ensure \u0027Configure Automatic Updates: Scheduled install day\u0027 is set to \u00270 - Every day\u0027",
-                       "Technique1":  "No MITRE ATT\u0026CK mapping",
-                       "Technique2":  null,
-                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
-                       "Mitigation2":  null
-                   },
-    "18.9.103.4":  {
-                       "Section":  "18.9.103",
-                       "Recommendation":  "18.9.103.4",
-                       "Profile":  "L1",
-                       "RecommendationTitle":  "Ensure \u0027No auto-restart with logged on users for scheduled automatic updates installations\u0027 is set to \u0027Disabled\u0027",
-                       "Technique1":  "No MITRE ATT\u0026CK mapping",
-                       "Technique2":  null,
-                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
-                       "Mitigation2":  null
-                   },
-    "18.9.103.5":  {
-                       "Section":  "18.9.103",
-                       "Recommendation":  "18.9.103.5",
-                       "Profile":  "L1",
-                       "RecommendationTitle":  "Ensure \u0027Remove access to ?Pause updates? feature\u0027 is set to \u0027Enabled\u0027",
-                       "Technique1":  "No MITRE ATT\u0026CK mapping",
-                       "Technique2":  null,
-                       "Mitigation1":  "No MITRE ATT\u0026CK mapping",
-                       "Mitigation2":  null
-                   },
-    "18.9.103.1.1":  {
-                         "Section":  "18.9.103.1",
-                         "Recommendation":  "18.9.103.1.1",
+    "18.9.108.1.1":  {
+                         "Section":  "18.9.108.1",
+                         "Recommendation":  "18.9.108.1.1",
                          "Profile":  "L1",
-                         "RecommendationTitle":  "Ensure \u0027Manage preview builds\u0027 is set to \u0027Enabled: Disable preview builds\u0027",
+                         "RecommendationTitle":  "Ensure \u0027No auto-restart with logged on users for scheduled automatic updates installations\u0027 is set to \u0027Disabled\u0027",
                          "Technique1":  "No MITRE ATT\u0026CK mapping",
                          "Technique2":  null,
                          "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                          "Mitigation2":  null
                      },
-    "18.9.103.1.2":  {
-                         "Section":  "18.9.103.1",
-                         "Recommendation":  "18.9.103.1.2",
+    "18.9.108.2.1":  {
+                         "Section":  "18.9.108.2",
+                         "Recommendation":  "18.9.108.2.1",
                          "Profile":  "L1",
-                         "RecommendationTitle":  "Ensure \u0027Select when Preview Builds and Feature Updates are received\u0027 is set to \u0027Enabled: Semi-Annual Channel, 180 or more days\u0027",
+                         "RecommendationTitle":  "Ensure \u0027Configure Automatic Updates\u0027 is set to \u0027Enabled\u0027",
                          "Technique1":  "No MITRE ATT\u0026CK mapping",
                          "Technique2":  null,
                          "Mitigation1":  "No MITRE ATT\u0026CK mapping",
                          "Mitigation2":  null
                      },
-    "18.9.103.1.3":  {
-                         "Section":  "18.9.103.1",
-                         "Recommendation":  "18.9.103.1.3",
+    "18.9.108.2.2":  {
+                         "Section":  "18.9.108.2",
+                         "Recommendation":  "18.9.108.2.2",
+                         "Profile":  "L1",
+                         "RecommendationTitle":  "Ensure \u0027Configure Automatic Updates: Scheduled install day\u0027 is set to \u00270 - Every day\u0027",
+                         "Technique1":  "No MITRE ATT\u0026CK mapping",
+                         "Technique2":  null,
+                         "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                         "Mitigation2":  null
+                     },
+    "18.9.108.2.3":  {
+                         "Section":  "18.9.108.2",
+                         "Recommendation":  "18.9.108.2.3",
+                         "Profile":  "L1",
+                         "RecommendationTitle":  "Ensure \u0027Remove access to ?Pause updates? feature\u0027 is set to \u0027Enabled\u0027",
+                         "Technique1":  "No MITRE ATT\u0026CK mapping",
+                         "Technique2":  null,
+                         "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                         "Mitigation2":  null
+                     },
+    "18.9.108.4.1":  {
+                         "Section":  "18.9.108.4",
+                         "Recommendation":  "18.9.108.4.1",
+                         "Profile":  "L1",
+                         "RecommendationTitle":  "Ensure \u0027Manage preview builds\u0027 is set to \u0027Disabled\u0027",
+                         "Technique1":  "No MITRE ATT\u0026CK mapping",
+                         "Technique2":  null,
+                         "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                         "Mitigation2":  null
+                     },
+    "18.9.103.4.2":  {
+                         "Section":  "18.9.108.4",
+                         "Recommendation":  "18.9.103.4.2",
+                         "Profile":  "L1",
+                         "RecommendationTitle":  "Ensure \u0027Select when Preview Builds and Feature Updates are received\u0027 is set to \u0027Enabled: 180 or more days\u0027",
+                         "Technique1":  "No MITRE ATT\u0026CK mapping",
+                         "Technique2":  null,
+                         "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                         "Mitigation2":  null
+                     },
+    "18.9.103.4.3":  {
+                         "Section":  "18.9.108.4",
+                         "Recommendation":  "18.9.103.4.3",
                          "Profile":  "L1",
                          "RecommendationTitle":  "Ensure \u0027Select when Quality Updates are received\u0027 is set to \u0027Enabled: 0 days\u0027",
                          "Technique1":  "No MITRE ATT\u0026CK mapping",
@@ -4914,6 +5054,16 @@
                      "Recommendation":  "19.7.8.4",
                      "Profile":  "L2",
                      "RecommendationTitle":  "Ensure \u0027Turn off all Windows spotlight features\u0027 is set to \u0027Enabled\u0027",
+                     "Technique1":  "No MITRE ATT\u0026CK mapping",
+                     "Technique2":  null,
+                     "Mitigation1":  "No MITRE ATT\u0026CK mapping",
+                     "Mitigation2":  null
+                 },
+    "19.7.8.5":  {
+                     "Section":  "19.7.8",
+                     "Recommendation":  "19.7.8.5",
+                     "Profile":  "L2",
+                     "RecommendationTitle":  "Ensure ?Turn off Spotlight collection on Desktop? is set to ?Enabled",
                      "Technique1":  "No MITRE ATT\u0026CK mapping",
                      "Technique2":  null,
                      "Mitigation1":  "No MITRE ATT\u0026CK mapping",
