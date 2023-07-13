@@ -40,6 +40,8 @@ $ModuleVersion = (Import-PowerShellDataFile -Path "$ScriptRoot\ATAPHtmlReport.ps
 $StatusValues = 'True', 'False', 'Warning', 'None', 'Error'
 $AuditProperties = @{ Name = 'Id' }, @{ Name = 'Task' }, @{ Name = 'Message' }, @{ Name = 'Status' }
 
+$MitreTechniquesToTacticsMap = Get-Content -Raw "$PSScriptRoot\TechniquesToTactics.json" | ConvertFrom-Json
+
 function Get-MitreTactics {
 	<#
 	.SYNOPSIS
@@ -49,14 +51,10 @@ function Get-MitreTactics {
 		Get-MitreTactics -TechniqueID 'T1133'
 	#>
     param(
-		[Parameter(Mandatory = $false)]
-        [PSCustomObject]
-		$json,
-        
 		[Parameter(Mandatory = $true)]
         $TechniqueID
     )
-	return $json.$TechniqueID
+	return $MitreTechniquesToTacticsMap.$TechniqueID
 }
 
 class MitreMap {
@@ -65,7 +63,6 @@ class MitreMap {
 	MitreMap() {
 		$this.Map = @{}
 
-		$jsonTactics = Get-Content -Raw "$PSScriptRoot\TechniquesToTactics.json" | ConvertFrom-Json
 		#start the excel com to make its API available
 		$MitreAttackPath = "$PSScriptRoot\enterprise-attack-v13.1.xlsx"
 		$excelObject = New-Object -ComObject Excel.Application
@@ -84,7 +81,7 @@ class MitreMap {
 				$isSubtechnique = ($techniquesSheet.Cells.Item($row, $isSubtechniqueColumn).Text).Trim()
 				if($isSubtechnique -eq "FALSCH"){   #why is that german?
 					$technique = $techniqeCell.Value()
-					$tactics = Get-MitreTactics -json $jsonTactics -TechniqueID $technique
+					$tactics = Get-MitreTactics -TechniqueID $technique
 					foreach($tactic in $tactics){
 						if($null -eq $this.Map[$tactic]) {
 							$this.Map[$tactic] = @{}
@@ -506,8 +503,6 @@ function Merge-CisAuditsToMitreMap {
     Begin {
 		$finally = $true;
 		try{
-			#open json to get tactics
-			$jsonTactics = Get-Content -Raw "$PSScriptRoot\TechniquesToTactics.json" | ConvertFrom-Json
 			#start the excel com to make its API available
 			$CISMappingPath = "$PSScriptRoot\CIS_Microsoft_Windows_10_Enterprise_Release_21H1_Benchmark_v1.11.0.xlsx"
 			
@@ -554,12 +549,12 @@ function Merge-CisAuditsToMitreMap {
 				$technique1 = ($worksheet.Cells.Item($row, 7).Text).Trim()
 				$technique2 = ($worksheet.Cells.Item($row, 8).Text).Trim()
 			
-				foreach ($tactic in Get-MitreTactics -json $jsonTactics -TechniqueID $technique1){
+				foreach ($tactic in Get-MitreTactics -TechniqueID $technique1){
 					if($tactic -and $technique1) {
 						$mitreMap.Add($tactic, $technique1, $id, $Audit.Status)
 					}
 				}
-				foreach ($tactic in Get-MitreTactics -json $jsonTactics -TechniqueID $technique2){
+				foreach ($tactic in Get-MitreTactics -TechniqueID $technique2){
 					if($tactic -and $technique2) {
 						$mitreMap.Add($tactic, $technique2, $id, $Audit.Status)
 					}
