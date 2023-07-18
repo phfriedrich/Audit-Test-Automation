@@ -85,7 +85,7 @@ class MitreMap {
 	MitreMap() {
 		$this.Map = @{}
 
-		#start the excel com to make its API available
+		#read in techniques from json-file
 		$techniques = Get-Content -Raw "$PSScriptRoot\enterprise-attack-v13-techniques.json" | ConvertFrom-Json
 
 		#add all techniques and tactics to map
