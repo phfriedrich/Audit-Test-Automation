@@ -286,34 +286,35 @@ button{
     border: 1px solid #000000;
     background-color: #ffffff;
 }
-#SSquare div{
-	width:5px;
-	height:5px;
-	border: 1px solid black;
-	background: green;
+
+.square-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+.square {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
 }
 
-#FSquare div{
-	width:5px;
-	height:5px;
-	border: 1px solid black;
-	background: red;
+#SSquareSquare {
+    background: green;
 }
 
-#GradientEx div{
-	width:5px;
-	height:5px;
-	border: 1px solid black;
-	background: linear-gradient(green, red);
+#FSquareSquare {
+    background: red;
 }
 
-#NoTest div{
-	width:5px;
-	height:5px;
-	border: 1px solid black;
-	background: grey;
+#GradientExSquare {
+    background: linear-gradient(green, red);
 }
-  
+
+#NoTestSquare {
+    background: grey;
+}
+ 
 #riskMatrixContainer{
 	display: grid;
 	position: relative;

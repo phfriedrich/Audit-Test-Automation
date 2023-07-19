@@ -1546,10 +1546,26 @@ function Get-ATAPHtmlReport {
 								htmlElement 'h2' @{id = 'CurrentATT&CKHeatpmap'} {"Current ATT&CK heatmap on tested System: "}
 								htmlElement 'p' @{} {'Hover over the MITRE IDs to get a quick information to each Technique'}
 								htmlElement 'p' @{} {'Explanation of the cell colors:'}
-								htmlElement 'div' @{id=SSquare} {'= 100% of the tests were successful, the system is protected in the best possible way'}
-								htmlElement 'div' @{id=FSquare} {'= 0% of the tests were successful, consider looking into possibilities to harden your system regarding this tactic / technique'}
-								htmlElement 'div' @{id=GradientEx} {'= the color gradient moves in 10% steps. The greener the cell, the more tests were successful'}
-								htmlElement 'div' @{id=NoTest} {'= No tests available yet'}
+
+								htmlElement 'div' @{class='square-container'}{
+									htmlElement 'div' @{class='square'; id='SSquareSquare'} {} 
+									htmlElement 'div'@{} {'= 100% of the tests were successful, the system is protected in the best possible way'}
+								}
+								
+								htmlElement 'div' @{class='square-container'}{
+									htmlElement 'div' @{class='square'; id='FSquareSquare'} {}
+									htmlElement 'div'@{} {'= 0% of the tests were successful, consider looking into possibilities to harden your system regarding this tactic / technique'}
+								}
+								
+								htmlElement 'div' @{class='square-container'}{
+									htmlElement 'div' @{class='square'; id='GradientExSquare'} {}
+									htmlElement 'div'@{} {'= the color gradient moves in 10% steps. The greener the cell, the more tests were successful'}
+								}
+								
+								htmlElement 'div' @{class='square-container'}{
+									htmlElement 'div' @{class='square'; id='NoTestSquare'} {}
+									htmlElement 'div'@{} {'= No tests available yet'}
+								}
 
 								$Mappings = $Sections | 
 								Where-Object { $_.Title -eq "CIS Benchmarks" } | 
