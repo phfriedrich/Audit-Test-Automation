@@ -286,6 +286,33 @@ button{
     border: 1px solid #000000;
     background-color: #ffffff;
 }
+#SSquare div{
+	width:5px;
+	height:5px;
+	border: 1px solid black;
+	background: green;
+}
+
+#FSquare div{
+	width:5px;
+	height:5px;
+	border: 1px solid black;
+	background: red;
+}
+
+#GradientEx div{
+	width:5px;
+	height:5px;
+	border: 1px solid black;
+	background: linear-gradient(green, red);
+}
+
+#NoTest div{
+	width:5px;
+	height:5px;
+	border: 1px solid black;
+	background: grey;
+}
   
 #riskMatrixContainer{
 	display: grid;
