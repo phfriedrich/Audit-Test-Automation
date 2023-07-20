@@ -1539,12 +1539,12 @@ function Get-ATAPHtmlReport {
 						if($Title -eq "Windows 10 Report" -and $os -match "Win32NT"){
 							Write-Progress -Activity "Creating mitre heatmap page" -Status "Progress:" -PercentComplete 75
 							htmlElement 'div' @{class = 'tabContent'; id = 'MITRE' } {
-								htmlElement 'h1'@{} {"Version of CIS in MITRE Mapping and tests"}
-								htmlElement 'p'@{} {Compare-EqualCISVersions -Title:$Title -BasedOn:$BasedOn}
 								htmlElement 'h1'@{} {"MITRE ATT&CK"}
 								htmlElement 'p'@{} {'To get a quick overview of how good your system is hardened in terms of the MITRE ATT&CK Framework we made a heatmap.'}
+								htmlElement 'h2'@{} {"Version of CIS in MITRE Mapping and tests"}
+								htmlElement 'p'@{} {Compare-EqualCISVersions -Title:$Title -BasedOn:$BasedOn}
 								htmlElement 'h2' @{id = 'CurrentATT&CKHeatpmap'} {"Current ATT&CK heatmap on tested System: "}
-								htmlElement 'p' @{} {'Hover over the MITRE IDs to get a quick information to each Technique'}
+								htmlElement 'p' @{id='Tip'} {'Tip: Hover over the MITRE IDs to get a quick information to each Technique'}
 								htmlElement 'p' @{} {'Explanation of the cell colors:'}
 
 								htmlElement 'div' @{class='square-container'}{
