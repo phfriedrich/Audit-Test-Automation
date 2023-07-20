@@ -597,7 +597,7 @@ function Get-ColorValue{
     )
 
 	if($SecondValue -eq 0) {
-		$result = 'grey'
+		$result = 'empty'
 	}
 	else {
 		$successPercentage = ($FirstValue / $SecondValue)

@@ -47,9 +47,9 @@ InModuleScope ATAPHtmlReport {
                 $result = Get-ColorValue -FirstValue 0 -SecondValue 10
                 $result | Should -Be "zero"
             }
-            It "Should return grey" {
+            It "Should return empty" {
                 $result = Get-ColorValue -FirstValue 0 -SecondValue 0
-                $result | Should -Be "grey"
+                $result | Should -Be "empty"
             }
     }
 }
