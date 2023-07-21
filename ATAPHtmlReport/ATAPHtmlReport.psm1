@@ -40,11 +40,8 @@ $ModuleVersion = (Import-PowerShellDataFile -Path "$ScriptRoot\ATAPHtmlReport.ps
 $StatusValues = 'True', 'False', 'Warning', 'None', 'Error'
 $AuditProperties = @{ Name = 'Id' }, @{ Name = 'Task' }, @{ Name = 'Message' }, @{ Name = 'Status' }
 
-# $MitreTacticsStore = Get-Content -Raw "$PSScriptRoot\resources\MitreTactics.json" | ConvertFrom-Json -AsHashtable   <- this is only available from powersehll v 6 onwards
-$MitreTacticsStore = Get-Content -Raw "$PSScriptRoot\resources\MitreTactics.json" | ConvertFrom-Json
-
-$MitreTechniquesToTacticsMap = Get-Content -Raw "$PSScriptRoot\TechniquesToTactics.json" | ConvertFrom-Json
-
+#read in all information needed for Mitre Attack Mapping from json file
+$global:CISToAttackMappingData = Get-Content -Raw "$PSScriptRoot\resources\CISToAttackMappingData.json" | ConvertFrom-Json
 
 function Get-MitreTacticName {
 		<#
@@ -60,8 +57,8 @@ function Get-MitreTacticName {
 		$TacticId
 	)
 
-	# $MitreTacticsStore[$tacticId] cannot be used because MitreTacticsStore is a customObject and not a map
-	return $MitreTacticsStore.$tacticId
+	# $CISToAttackMappingData[AttackTactics][$tacticId] cannot be used because CISToAttackMappingData is a customObject and not a map
+	return $CISToAttackMappingData.'AttackTactics'.$tacticId
 }
 
 function Get-MitreTactics {
@@ -76,7 +73,7 @@ function Get-MitreTactics {
 		[Parameter(Mandatory = $true)]
         $TechniqueID
     )
-	return $MitreTechniquesToTacticsMap.$TechniqueID
+	return $CISToAttackMappingData.'TechniquesToTactis'.$TechniqueID
 }
 
 class MitreMap {
@@ -86,15 +83,17 @@ class MitreMap {
 		$this.Map = @{}
 
 		#read in techniques from json-file
-		$techniques = Get-Content -Raw "$PSScriptRoot\enterprise-attack-v13-techniques.json" | ConvertFrom-Json
+		$techniques = $global:CISToAttackMappingData.'AttackTechniques'
+		$tactics = $global:CISToAttackMappingData.'AttackTactics'
+
+		foreach($tacitc in $tactics.psobject.properties.name) {
+			$this.Map[$tacitc] = @{}
+		}
 
 		#add all techniques and tactics to map
 		foreach($technique in $techniques.psobject.properties.name){
 			$tactics = Get-MitreTactics -TechniqueID $techniques.$technique.'ID'
 			foreach($tactic in $tactics){
-				if($null -eq $this.Map[$tactic]) {
-					$this.Map[$tactic] = @{}
-				}
 				if($null -eq $this.Map[$tactic][$techniques.$technique.'ID']) {
 					$this.Map[$tactic][$techniques.$technique.'ID'] = @{}
 				}
@@ -495,7 +494,7 @@ function Merge-CisAuditsToMitreMap {
         $Audit
     )
     Begin {
-		$json = Get-Content -Raw "$PSScriptRoot\CIS_Microsoft_Windows_10_Enterprise_Release_21H1_Benchmark_v1-MITRE ATT&CK Mappings.json" | ConvertFrom-Json
+		$json = $global:CISToAttackMappingData.'CISAttackMapping'
 		$mitreMap = [MitreMap]::new()
     }
         
@@ -527,6 +526,15 @@ function Merge-CisAuditsToMitreMap {
 }
 
 function ConvertTo-HtmlTable {
+	<#
+	.Synopsis 
+		Generates a html table using the mapping keys of the tactics and techniques
+		It also adds the links to the table using the function "get-MitreLink"
+		and colours the cells
+	.Example
+		ConvertTo-HtmlTable $Mappings.map
+
+	#>
     param(
         [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
         $Mappings
@@ -544,24 +552,23 @@ function ConvertTo-HtmlTable {
                 }
             }
         }
-        htmlElement 'tbody' @{id='MITREtbody'} {
+		htmlElement 'tbody' @{id='MITREtbody'} {
             htmlElement 'tr' @{} {
                 foreach ($tactic in $Mappings.Keys) {
-                    htmlElement 'td' @{id='MITREtbody'} {
+                    htmlElement 'td' @{} {
                         foreach ($technique in $Mappings[$tactic].Keys){
-                            htmlElement 'div' @{id='MITRETechniques'} {
-                                htmlElement 'div' @{class='MITRETechnique'} {  
-                                    $successCounter = 0
-                                    foreach ($id in $Mappings[$tactic][$technique].Keys) {
-                                        if($Mappings[$tactic][$technique][$id] -eq $true){
-                                            $successCounter++
-                                        }
-                                    }
-                                    $url = get-MitreLink -technique -id $technique
-                                    htmlElement 'a' @{href = $url } { "$technique" } 
-                                    htmlElement 'span' @{id='MITREtd'} {": $successCounter /" + $Mappings[$tactic][$technique].Count }
-                                }
-                            }
+							$successCounter = 0
+							foreach ($id in $Mappings[$tactic][$technique].Keys) {
+								if($Mappings[$tactic][$technique][$id] -eq $true){
+									$successCounter++
+								}
+							}
+							$url = get-MitreLink -technique -id $technique
+							$colorClass = Get-ColorValue $successCounter $Mappings[$tactic][$technique].Count
+							htmlElement 'div' @{class="MITRETechnique $colorClass"} {
+								htmlElement 'a' @{href = $url } { "$technique" } 
+								htmlElement 'span' @{} {": $successCounter /" + $Mappings[$tactic][$technique].Count}
+							}
                         }
                     }
                 }
@@ -585,11 +592,14 @@ function Get-ColorValue{
         [int]$SecondValue
     )
 
-    if ($FirstValue -eq $SecondValue) {
-        return 1
+	if (0 -eq $SecondValue) {
+		return "empty"
+	}
+    elseif ($FirstValue -eq $SecondValue) {
+        return "success"
     }
     else {
-        return 0
+        return "failure"
     }
 }
 
