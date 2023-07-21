@@ -570,7 +570,9 @@ function ConvertTo-HtmlTable {
 							$url = get-MitreLink -technique -id $technique
 							$colorClass = Get-ColorValue $successCounter $Mappings[$tactic][$technique].Count
 							htmlElement 'div' @{class="MITRETechnique $colorClass"} {
-								htmlElement 'a' @{href = $url } { "$technique" } 
+								htmlElement 'a' @{href = $url; class = "tooltip"} { "$technique" 
+									htmlElement 'span' @{class = "tooltiptext"} {"$technique"}
+								} 
 								htmlElement 'span' @{} {": $successCounter /" + $Mappings[$tactic][$technique].Count}
 							}
                         }
