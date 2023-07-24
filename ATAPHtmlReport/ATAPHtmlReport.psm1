@@ -40,11 +40,8 @@ $ModuleVersion = (Import-PowerShellDataFile -Path "$ScriptRoot\ATAPHtmlReport.ps
 $StatusValues = 'True', 'False', 'Warning', 'None', 'Error'
 $AuditProperties = @{ Name = 'Id' }, @{ Name = 'Task' }, @{ Name = 'Message' }, @{ Name = 'Status' }
 
-# $MitreTacticsStore = Get-Content -Raw "$PSScriptRoot\resources\MitreTactics.json" | ConvertFrom-Json -AsHashtable   <- this is only available from powersehll v 6 onwards
-$MitreTacticsStore = Get-Content -Raw "$PSScriptRoot\resources\MitreTactics.json" | ConvertFrom-Json
-
-$MitreTechniquesToTacticsMap = Get-Content -Raw "$PSScriptRoot\TechniquesToTactics.json" | ConvertFrom-Json
-
+#read in all information needed for Mitre Attack Mapping from json file
+$global:CISToAttackMappingData = Get-Content -Raw "$PSScriptRoot\resources\CISToAttackMappingData.json" | ConvertFrom-Json
 
 function Get-MitreTacticName {
 		<#
@@ -60,8 +57,8 @@ function Get-MitreTacticName {
 		$TacticId
 	)
 
-	# $MitreTacticsStore[$tacticId] cannot be used because MitreTacticsStore is a customObject and not a map
-	return $MitreTacticsStore.$tacticId
+	# $CISToAttackMappingData[AttackTactics][$tacticId] cannot be used because CISToAttackMappingData is a customObject and not a map
+	return $CISToAttackMappingData.'AttackTactics'.$tacticId
 }
 
 function Get-MitreTactics {
@@ -76,7 +73,22 @@ function Get-MitreTactics {
 		[Parameter(Mandatory = $true)]
         $TechniqueID
     )
-	return $MitreTechniquesToTacticsMap.$TechniqueID
+	return $CISToAttackMappingData.'TechniquesToTactis'.$TechniqueID
+}
+
+function Get-MitreTechniqueName {
+	<#
+	.SYNOPSIS
+		Returns the name of a Mitre technique for a given Mitre Technique Id
+
+	.EXAMPLE
+		Get-MitreTechniqueName -TechniqueID 'T1133'
+	#>
+    param(
+		[Parameter(Mandatory = $true)]
+        $TechniqueID
+    )
+	return $CISToAttackMappingData.'AttackTechniques'.$TechniqueID.'name'
 }
 
 class MitreMap {
@@ -86,9 +98,8 @@ class MitreMap {
 		$this.Map = @{}
 
 		#read in techniques from json-file
-		$techniques = Get-Content -Raw "$PSScriptRoot\enterprise-attack-v13-techniques.json" | ConvertFrom-Json
-		#can't access $MitreTacticsStore int this function so read in file again
-		$tactics = Get-Content -Raw "$PSScriptRoot\resources\MitreTactics.json" | ConvertFrom-Json
+		$techniques = $global:CISToAttackMappingData.'AttackTechniques'
+		$tactics = $global:CISToAttackMappingData.'AttackTactics'
 
 		foreach($tacitc in $tactics.psobject.properties.name) {
 			$this.Map[$tacitc] = @{}
@@ -498,7 +509,7 @@ function Merge-CisAuditsToMitreMap {
         $Audit
     )
     Begin {
-		$json = Get-Content -Raw "$PSScriptRoot\CIS_Microsoft_Windows_10_Enterprise_Release_21H1_Benchmark_v1-MITRE ATT&CK Mappings.json" | ConvertFrom-Json
+		$json = $global:CISToAttackMappingData.'CISAttackMapping'
 		$mitreMap = [MitreMap]::new()
     }
         
@@ -570,7 +581,9 @@ function ConvertTo-HtmlTable {
 							$url = get-MitreLink -technique -id $technique
 							$colorClass = Get-ColorValue $successCounter $Mappings[$tactic][$technique].Count
 							htmlElement 'div' @{class="MITRETechnique $colorClass"} {
-								htmlElement 'a' @{href = $url } { "$technique" } 
+								htmlElement 'a' @{href = $url; class = "tooltip"} { "$technique" 
+									htmlElement 'span' @{class = "tooltiptext"} { Get-MitreTechniqueName -TechniqueID $technique }
+								} 
 								htmlElement 'span' @{} {": $successCounter /" + $Mappings[$tactic][$technique].Count}
 							}
                         }
@@ -1571,6 +1584,11 @@ function Get-ATAPHtmlReport {
 								htmlElement 'h1'@{} {"MITRE ATT&CK"}
 								htmlElement 'p'@{} {'To get a quick overview of how good your system is hardened in terms of the MITRE ATT&CK Framework we made a heatmap.'}
 								htmlElement 'h2' @{id = 'CurrentATT&CKHeatpmap'} {"Current ATT&CK heatmap on tested System: "}
+								
+								htmlElement 'label' @{} {
+									"hide techniques that are performed outside of enterprise defenses and controls: "
+									htmlElement 'input' @{type = "checkbox"; id = "mitreFilterCheckbox"; onchange = "hideMitreTechniques(this)"} {}
+								}
 
 								$Mappings = $Sections | 
 								Where-Object { $_.Title -eq "CIS Benchmarks" } | 
