@@ -624,7 +624,7 @@ function ConvertTo-HtmlTable {
 								htmlElement 'a' @{href = $url; class = "tooltip"} { "$technique" 
 									htmlElement 'span' @{class = "tooltiptext"} { Get-MitreTechniqueName -TechniqueID $technique }
 								} 
-								htmlElement 'span' @{} {": $successCounter /" + $Mappings[$tactic][$technique].Count}
+								htmlElement 'span' @{} {": $successCounter/" + $Mappings[$tactic][$technique].Count}
 							}
                         }
                     }
