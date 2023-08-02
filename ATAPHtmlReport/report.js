@@ -243,6 +243,7 @@ function hideMitreTechniques(checkbox){
     } else {
         for (let i = 0; i < categoryElements.length; i++) {
             categoryElements[i].style.removeProperty('padding');
+            categoryElements[i].style = "background: #a7a7a7;";
 
             const children = categoryElements[i].querySelectorAll('*');
             for (let j = 0; j < children.length; j++) {
