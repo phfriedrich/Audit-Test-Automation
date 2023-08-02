@@ -1656,11 +1656,10 @@ function Get-ATAPHtmlReport {
 							htmlElement 'div' @{class = 'tabContent'; id = 'MITRE' } {
 								htmlElement 'h1'@{} {"MITRE ATT&CK"}
 								htmlElement 'p'@{} {'To get a quick overview of how good your system is hardened in terms of the MITRE ATT&CK Framework we made a heatmap.'}
+								htmlElement 'p' @{id='Tip'} {'Tip: Hover over the MITRE IDs to get a quick information to each Technique'}
 								htmlElement 'h2'@{} {"Version of CIS in MITRE Mapping and tests"}
 								htmlElement 'p'@{} {Compare-EqualCISVersions -Title:$Title -BasedOn:$BasedOn}
-								htmlElement 'h2' @{id = 'CurrentATT&CKHeatpmap'} {"Current ATT&CK heatmap on tested System: "}
-								htmlElement 'p' @{id='Tip'} {'Tip: Hover over the MITRE IDs to get a quick information to each Technique'}
-								htmlElement 'p' @{} {'Explanation of the cell colors:'}
+								htmlElement 'h2' @{} {'Explanation of the cell colors:'}
 
 								htmlElement 'div' @{class='square-container'}{
 									htmlElement 'div' @{class='square'; id='SSquareSquare'} {} 
@@ -1682,10 +1681,14 @@ function Get-ATAPHtmlReport {
 									htmlElement 'div'@{} {'= No tests available yet'}
 								}
 								
+								htmlElement 'h2' @{} {"Filter:"}
+
 								htmlElement 'label' @{} {
-									"hide techniques that are performed outside of enterprise defenses and controls: "
+									"hide techniques that are performed outside of enterprise defenses and controls:"
 									htmlElement 'input' @{type = "checkbox"; id = "mitreFilterCheckbox"; onchange = "hideMitreTechniques(this)"} {}
 								}
+
+								htmlElement 'h2' @{} {"Current ATT&CK heatmap on tested System:"}
 
 								$Mappings = $Sections | 
 								Where-Object { $_.Title -eq "CIS Benchmarks" -or $_.Title -eq "CIS Stand-alone Benchmarks"} | 
