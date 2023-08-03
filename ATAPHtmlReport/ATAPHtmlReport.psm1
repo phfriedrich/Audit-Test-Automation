@@ -106,6 +106,21 @@ function Get-MitreTechniqueName {
 	return $CISToAttackMappingData.'AttackTechniques'.$TechniqueID.'name'
 }
 
+function Get-MitreTechniqueDescription {
+	<#
+	.SYNOPSIS
+		Returns the name of a Mitre technique for a given Mitre Technique Id
+
+	.EXAMPLE
+		Get-MitreTechniqueName -TechniqueID 'T1133'
+	#>
+    param(
+		[Parameter(Mandatory = $true)]
+        $TechniqueID
+    )
+	return $CISToAttackMappingData.'AttackTechniques'.$TechniqueID.'description'
+}
+
 function Test-CompatibleMitreReport {
 	<#
 	.SYNOPSIS
@@ -745,14 +760,21 @@ function ConvertTo-HtmlTable {
 							foreach ($id in $Mappings[$tactic][$technique].Keys) {
 								if($Mappings[$tactic][$technique][$id] -eq [AuditInfoStatus]::True){
 									$successCounter++
-								}
+								} 
 							}
 							$url = get-MitreLink -technique -id $technique
 							$colorClass = Get-ColorValue $successCounter $Mappings[$tactic][$technique].Count
 							$categories = Get-MitreTechniqueCategories -TechniqueID $technique
 							htmlElement 'div' @{class="MITRETechnique $colorClass $categories"} {
 								htmlElement 'a' @{href = $url; class = "tooltip"} { "$technique" 
-									htmlElement 'span' @{class = "tooltiptext"} { Get-MitreTechniqueName -TechniqueID $technique }
+									htmlElement 'span' @{class = "tooltiptext"} { 
+										htmlElement 'p' @{} {
+											Get-MitreTechniqueName -TechniqueID $technique
+										} 
+										htmlElement 'p' @{} {
+											Get-MitreTechniqueDescription -TechniqueID $technique
+										}
+									}
 								} 
 								htmlElement 'span' @{} {": $successCounter/" + $Mappings[$tactic][$technique].Count}
 							}
@@ -818,12 +840,12 @@ function ConvertTo-HtmlCISA {
 								$_
 								" "
 							}
-						}
-					}
-				}
-			}
-		}
-	}
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 function Get-ColorValue{
@@ -1896,7 +1918,7 @@ function Get-ATAPHtmlReport {
 								}
 								
 								htmlElement 'h2' @{} {"Filters"}
-
+								
 								htmlElement 'label' @{} {
 									"hide techniques that are performed outside of enterprise defenses and controls:"
 									htmlElement 'input' @{type = "checkbox"; id = "mitreFilterCheckbox"; onchange = "hideMitreTechniques(this)"} {}
