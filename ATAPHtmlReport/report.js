@@ -257,3 +257,26 @@ function hideMitreTechniques(checkbox){
         }
     }
 }
+
+const categoryElementsNoEasyMitigation = document.getElementsByClassName('noEasyMitigation');
+function hideMitreTechniquesNoEasyMitigation(checkbox){
+    if (checkbox.checked) {
+        for (let i = 0; i < categoryElementsNoEasyMitigation.length; i++) {
+            categoryElementsNoEasyMitigation[i].style = 'padding: 0.1em;';
+
+            const children = categoryElementsNoEasyMitigation[i].querySelectorAll('*');
+            for (let j = 0; j < children.length; j++) {
+                children[j].style = 'display: none;';
+            }
+        }
+    } else {
+        for (let i = 0; i < categoryElementsNoEasyMitigation.length; i++) {
+            categoryElementsNoEasyMitigation[i].style.removeProperty('padding');
+
+            const children = categoryElementsNoEasyMitigation[i].querySelectorAll('*');
+            for (let j = 0; j < children.length; j++) {
+                children[j].style.removeProperty('display'); 
+            }
+        }
+    }
+}
