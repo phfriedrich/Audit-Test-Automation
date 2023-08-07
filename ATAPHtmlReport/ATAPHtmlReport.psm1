@@ -748,9 +748,9 @@ function ConvertTo-HtmlTable {
 								}
 							}
 							$url = get-MitreLink -technique -id $technique
-							$colorClass = Get-ColorValue $successCounter $Mappings[$tactic][$technique].Count
+							$color = Get-ColorValue $successCounter $Mappings[$tactic][$technique].Count
 							$categories = Get-MitreTechniqueCategories -TechniqueID $technique
-							htmlElement 'div' @{class="MITRETechnique $colorClass $categories"} {
+							htmlElement 'div' @{class="MITRETechnique $categories"; style="background-color: $color; background-clip: border-box"} {
 								htmlElement 'a' @{href = $url; class = "tooltip"} { "$technique" 
 									htmlElement 'span' @{class = "tooltiptext"} { Get-MitreTechniqueName -TechniqueID $technique }
 								} 
@@ -842,23 +842,23 @@ function Get-ColorValue{
     )
 
 	if($SecondValue -eq 0) {
-		$result = 'empty'
+		$result = '#a7a7a7'
 	}
 	else {
 		$successPercentage = ($FirstValue / $SecondValue)
 
 		switch ($successPercentage) {
-			1 {$result = 'hundred'}
-			{$_ -le 0.99} {$result = 'ninety'}
-			{$_ -le 0.89} {$result = 'eighty'}
-			{$_ -le 0.79} {$result = 'seventy'}
-			{$_ -le 0.69} {$result = 'sixty'}
-			{$_ -le 0.59} {$result = 'fifty'}
-			{$_ -le 0.49} {$result = 'fourty'}
-			{$_ -le 0.39} {$result = 'thirty'}
-			{$_ -le 0.29} {$result = 'twenty'}
-			{$_ -le 0.19} {$result = 'ten'}
-			{$_ -le 0.09} {$result = 'zero'}
+			1 {$result = '#33cca6'}
+			{$_ -le 0.99} {$result = '#52CC8F'}
+			{$_ -le 0.89} {$result = '#70CC78'}
+			{$_ -le 0.79} {$result = '#8FCC61'}
+			{$_ -le 0.69} {$result = '#ADCC4A'}
+			{$_ -le 0.59} {$result = '#CCCC33'}
+			{$_ -le 0.49} {$result = '#CCA329'}
+			{$_ -le 0.39} {$result = '#CC7A1F'}
+			{$_ -le 0.29} {$result = '#CC5214'}
+			{$_ -le 0.19} {$result = '#CC290A'}
+			{$_ -le 0.09} {$result = '#cc0000'}
 		}
 	}
 
@@ -899,8 +899,7 @@ function Get-TacticCounter{
 function Compare-EqualCISVersions {
 	<#
 	.Synopsis 
-		Returns a String, that explains if the $ReportBasedOn and $MitreMappingCompatible Versions can be used together.
-		Returns null when when the report is not compatible with any mitre mapping. 
+		Returns a boolean, if the $ReportBasedOn and $MitreMappingCompatible Versions can be used together or not.
 	.Parameter  $Title
 		The Title of the Report
 	.Parameter  $ReportBasedOn
@@ -928,12 +927,9 @@ function Compare-EqualCISVersions {
 
 	if(Test-CompatibleMitreReport -Title $Title -os $os){
 		$ReportBasedOn = $ReportBasedOn | Where-Object {$_ -match 'CIS'}
-		if($null -ne $ReportBasedOn -and $null -ne $MitreMappingCompatible -and $($ReportBasedOn -in $MitreMappingCompatible)){
-			return "The CIS Versions used for the MITRE mapping and testing are the same."
-		}
-		return "The CIS Version used for the MITRE mapping doesn't match with the CIS Version used for the tests."
+		return $($null -ne $ReportBasedOn -and $null -ne $MitreMappingCompatible -and $($ReportBasedOn -in $MitreMappingCompatible))
 	}
-	return $null
+	return $false
 }
 
 function Get-HtmlReportSection {
@@ -1872,26 +1868,34 @@ function Get-ATAPHtmlReport {
 								htmlElement 'p'@{} {$(Get-MitreMappingMetaData Version) + "."}
 								htmlElement 'p'@{} {"Based on: " + $(Get-MitreMappingMetaData BasedOn) + "."}
 								$MitreMappingCompatible = Get-MitreMappingMetaData Compatible
-								htmlElement 'p'@{} {Compare-EqualCISVersions -Title:$Title -ReportBasedOn:$BasedOn -MitreMappingCompatible:$MitreMappingCompatible}
+								if (-not $(Compare-EqualCISVersions -Title:$Title -ReportBasedOn:$BasedOn -MitreMappingCompatible:$MitreMappingCompatible)){
+									Write-Warning "The CIS version used for the MITRE mapping doesn't match with the CIS version used for the tests. The Mitre heatmap will still be generated but might contain false information."
+									htmlElement 'p'@{style = "font-size: 1.2em; color: red;"} {"The CIS version used for the MITRE mapping doesn't match with the CIS version used for the tests."}
+								}
 								htmlElement 'h2' @{} {'Explanation of the cell colors'}
 
 								htmlElement 'div' @{class='square-container'}{
-									htmlElement 'div' @{class='square'; id='SSquareSquare'} {} 
+									$color_S = Get-ColorValue 1 1
+									htmlElement 'div' @{class='square'; style="background: $color_S"} {} 
 									htmlElement 'div'@{} {'= 100% of the tests were successful, the system is protected in the best possible way'}
 								}
 								
 								htmlElement 'div' @{class='square-container'}{
-									htmlElement 'div' @{class='square'; id='FSquareSquare'} {}
+									$color_F = Get-ColorValue 0 1
+									htmlElement 'div' @{class='square'; style="background: $color_F"} {}
 									htmlElement 'div'@{} {'= 0% of the tests were successful, consider looking into possibilities to harden your system regarding this tactic / technique'}
 								}
 								
 								htmlElement 'div' @{class='square-container'}{
-									htmlElement 'div' @{class='square'; id='GradientExSquare'} {}
+									$color_S = Get-ColorValue 1 1
+									$color_F = Get-ColorValue 0 1
+									htmlElement 'div' @{class='square'; style="background: linear-gradient($color_S,$color_F)"} {}
 									htmlElement 'div'@{} {'= the color gradient moves in 10% steps. The greener the cell, the more tests were successful'}
 								}
 								
 								htmlElement 'div' @{class='square-container'}{
-									htmlElement 'div' @{class='square'; id='NoTestSquare'} {}
+									$color_E = Get-ColorValue 1 0
+									htmlElement 'div' @{class='square'; style="background: $color_E"} {}
 									htmlElement 'div'@{} {'= No tests available yet'}
 								}
 								
@@ -1916,13 +1920,14 @@ function Get-ATAPHtmlReport {
 							htmlElement 'div' @{class = 'tabContent'; id = 'CISA' } {
 								htmlElement 'h1'@{} {"CISA Mitigation"}
 								htmlElement 'p'@{} {'To get a quick overview of which Mitigation you should take, based on the MITRE ATT&CK heatmap'}
+								htmlElement 'p'@{} {'The table presents three columns: The first column lists the mitigations recommended by CISA, the second column contains the corresponding mitigation IDs from MITRE, and the third column shows the techniques that have at least one CISA-recommended mitigation and have experienced at least one test failure.'}
 
 								$CISAMitigations = $Mappings.Map | Get-MitigationsFromFailedTests
 								ConvertTo-HtmlCISA $CISAMitigations
 							}
 						}
 						else {
-							Write-Host -ForegroundColor DarkYellow "Warning: Mitre Heatmap can only be used on a Windows System together with `"Microsoft Windows 10`", `"Microsoft Windows 10 Stand-alone`", `"Microsoft Windows 11`", `"Microsoft Windows 11 Stand-alone`", `"Microsoft Windows Server 2019`" or `"Microsoft Windows Server 2022`". The Mitre Heatmap will not be generated"
+							Write-Warning "Mitre Heatmap can only be used on a Windows System together with `"Microsoft Windows 10`", `"Microsoft Windows 10 Stand-alone`", `"Microsoft Windows 11`", `"Microsoft Windows 11 Stand-alone`", `"Microsoft Windows Server 2019`" or `"Microsoft Windows Server 2022`". The Mitre Heatmap will not be generated"
 						}
 					}
 
