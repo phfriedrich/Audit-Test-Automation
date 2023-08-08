@@ -1909,7 +1909,7 @@ function Get-ATAPHtmlReport {
 								htmlElement 'p' @{} {
 									htmlElement 'label' @{} {
 										"hide techniques that cannot be easily mitigated with preventive controls:"
-										htmlElement 'input' @{type = "checkbox"; onchange = "noEasyMitigation(this)"} {}
+										htmlElement 'input' @{type = "checkbox"; id = "noEasyMitigationCheckbox"; onchange = "noEasyMitigation(this)"} {}
 									}
 								}
 
