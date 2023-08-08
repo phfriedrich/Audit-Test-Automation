@@ -790,7 +790,7 @@ function ConvertTo-HtmlCISA {
 			$KeyOrder | ForEach-Object {
 				htmlElement 'tr' @{} {
 					htmlElement 'td' @{class='CISAMitigationIDs'} {
-						htmlElement 'a' @{href = $(get-MitreLink -type mitigations -id $_.Key)} {
+						htmlElement 'a' @{href = $(get-MitreLink -type mitigations -id $_.Key); target="_blank"} {
 							$_.Key
 						}
 					}
@@ -802,7 +802,7 @@ function ConvertTo-HtmlCISA {
 					htmlElement 'td' @{class='CISAMitreTechniqueIDs'} {
 						$mitigationsList = $CISAMitigations[$_.Key]['MitreTechniqueIDs']
 						for ($i = 0; $i -lt $mitigationsList.Length; $i++) {
-							htmlElement 'a' @{href = $(get-MitreLink -type techniques -id $mitigationsList[$i])} {
+							htmlElement 'a' @{href = $(get-MitreLink -type techniques -id $mitigationsList[$i]); target="_blank"} {
 								$mitigationsList[$i]
 								# if($i -lt $mitigationsList.Length - 1){
 								# 	" | "
@@ -1913,7 +1913,7 @@ function Get-ATAPHtmlReport {
 									"This table shows the top mitigations, that help against the most used attack techniques. 
 									Implementing these mitigations has the biggest impact on the overall security of the system. 
 									The table is based on the Information from CISAs " 
-									htmlElement 'a' @{href = "https://www.cisa.gov/sites/default/files/publications/RVA_INFOGRAPHIC_508c.pdf"} {
+									htmlElement 'a' @{href = "https://www.cisa.gov/sites/default/files/publications/RVA_INFOGRAPHIC_508c.pdf"; target="_blank"} {
 										"Risk and Vulverability Assessment (RVA) Mapped to the MITRE ATT&CK Framework. "
 									}
 									"Additionaly the table is sorted, based on the number of Audits that failed but could be prevented by a given mitigation."
