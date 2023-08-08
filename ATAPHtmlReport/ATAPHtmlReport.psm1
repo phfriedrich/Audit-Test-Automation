@@ -1893,20 +1893,20 @@ function Get-ATAPHtmlReport {
 
 								htmlElement 'label' @{} {
 									"Hide techniques that are performed outside of enterprise defenses and controls:"
-									htmlElement 'input' @{type = "checkbox"; id = "mitreFilterCheckbox"; onchange = "hideMitreTechniques(this)"} {}
+									htmlElement 'input' @{type = "checkbox"; id = "mitreFilterCheckbox"; onchange = "hideMitreTechniques(this, '.orgMeasure')"} {}
 								}
 
 								htmlElement 'p' @{} {
 									htmlElement 'label' @{} {
 										"Hide techniques that cannot be easily mitigated with preventive controls:"
-										htmlElement 'input' @{type = "checkbox"; id = "noEasyMitigationCheckbox"; onchange = "noEasyMitigation(this)"} {}
+										htmlElement 'input' @{type = "checkbox"; id = "noEasyMitigationCheckbox"; onchange = "hideMitreTechniques(this, '.noEasyMitigation')"} {}
 									}
 								}
 
 								htmlElement 'p' @{}{
 									htmlElement 'label' @{}{
 										"Display only techniques related to the attack vector 'E-Mail'"
-										htmlElement 'input' @{type = "checkbox"; id = "mailFilterCheckbox"; onchange = "hideEverythingButMailTechniques(this)"} {}
+										htmlElement 'input' @{type = "checkbox"; id = "mailFilterCheckbox"; onchange = "hideMitreTechniques(this, '.MITRETechnique:not(.mailVector)')"} {}
 									}
 								}
 
