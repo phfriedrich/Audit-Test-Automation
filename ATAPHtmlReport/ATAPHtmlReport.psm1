@@ -1921,9 +1921,9 @@ function Get-ATAPHtmlReport {
 									Implementing these mitigations has the biggest impact on the overall security of the system. 
 									The table is based on the Information from CISAs " 
 									htmlElement 'a' @{href = "https://www.cisa.gov/sites/default/files/publications/RVA_INFOGRAPHIC_508c.pdf"} {
-										"Risk and Vulverability Assessment (RVA) Mapped to the MITRE ATT&CK Framework. "
+										"Risk and Vulnerability Assessment (RVA) mapped to the MITRE ATT&CK Framework."
 									}
-									"Additionaly the table is sorted, based on the number of Audits that failed but could be prevented by a given mitigation."
+									"Additionally, the table is sorted based on the number of audits that failed but could be prevented by a given mitigation."
 								}
 								htmlElement 'p'@{} {'The table presents three columns: The first column lists the mitigations recommended by CISA, the second column contains the corresponding mitigation IDs from MITRE, and the third column shows the techniques that have at least one CISA-recommended mitigation and have experienced at least one test failure.'}
 								htmlElement 'h1'@{} {'Mitigation for top techniques'}
