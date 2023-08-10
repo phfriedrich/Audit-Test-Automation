@@ -238,6 +238,9 @@ function calcDotPosition(){
 /*
 techniques are hidden or shown based on the status of the provided checkboxes and classes 
 classes must be in a compatible format for document.querySelectorAll()
+examples with first all nodes in the 'orgMeasure' class and second all nodes that are in the 'MITRETechnique' but not in the 'mailVector' class:
+hideMitreTechniques(this, '.orgMeasure')
+hideMitreTechniques(this, '.MITRETechnique:not(.mailVector)')
 */
 let activeFilter = new Array();
 function hideMitreTechniques(checkbox, classes){
@@ -258,14 +261,8 @@ function hideMitreTechniques(checkbox, classes){
         activeFilter.splice(activeFilter.indexOf(classes),1);
         /* create an array from the classElements since it makes filtering easier. */
         let elementsToHide = Array.from(classElements);
-        let elementsNotToHide;
         /* create an array that includes all elements from the remaining active filters */
-        if(activeFilter.length === 0) {
-            elementsNotToHide = new Array()
-        }
-        else {
-            elementsNotToHide = Array.from(document.querySelectorAll(activeFilter));
-        }
+        let elementsNotToHide = (activeFilter.length === 0) ? new Array() : Array.from(document.querySelectorAll(activeFilter));
         /* filter the elementsToHide array to retrieve and display only the elements that are not hidden by other filters */
         elementsToHide = elementsToHide.filter(element => !elementsNotToHide.includes(element));
         for (let i = 0; i < elementsToHide.length; i++) {
