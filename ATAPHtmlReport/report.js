@@ -235,6 +235,10 @@ function calcDotPosition(){
 
 }
 
+/*
+techniques are hidden or shown based on the status of the provided checkboxes and classes 
+classes must be in a compatible format for document.querySelectorAll()
+*/
 let activeFilter = new Array();
 function hideMitreTechniques(checkbox, classes){
     let classElements = document.querySelectorAll(classes);
